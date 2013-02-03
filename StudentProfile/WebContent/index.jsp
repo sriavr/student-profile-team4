@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Welcome to Student Profile
+	Welcome to Student Profile 2013
 </body>
 </html>
