@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+
+	<definition name="baselayout" template="/baseLayout.jsp">
+		<put-attribute name="title" value="Student Profile" />
+		<put-attribute name="header" value="/header.jsp" />
+		<put-attribute name="left" value="/leftPane.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="announcement" value="/announcements.jsp" />
+		<put-attribute name="news" value="/news.jsp" />
+	</definition>
+	
+	
+	<definition name="welcome.jsp" extends="baselayout">
+		<put-attribute name="body" value="/welcome.jsp"/>
+	</definition>
+	<definition name="error.jsp" extends="baselayout">
+		<put-attribute name="body" value="/error.jsp"/>
+	</definition>
+			
+</tiles-definitions>
