@@ -15,6 +15,15 @@
 			<result name="success" type="tiles">welcome.jsp</result>
 			<result name="failure" type="tiles">error.jsp</result>
 		</action>
+		<action name="login" class ="com.studentProfile.action.ForwardAction" method="login">
+			<result name="success" type="tiles">login.jsp</result>
+			<result name="failure" type="tiles">error.jsp</result>
+		</action>
+		<action name="loginAction" class ="com.studentProfile.action.LoginAction" >
+			<result name="adminLoginSuccess" type="tiles">administratorHome.jsp</result>
+			<result name="studentLoginSuccess" type="tiles">studentHome.jsp</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
 	
 	</package>
 	
