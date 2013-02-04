@@ -20,5 +20,18 @@
 	<definition name="error.jsp" extends="baselayout">
 		<put-attribute name="body" value="/error.jsp"/>
 	</definition>
+	<definition name="login.jsp" extends="baselayout">
+		<put-attribute name="body" value="/login.jsp"/>
+		<put-attribute name="header" value=""/>
+		<put-attribute name="left" value=""/>
+		<put-attribute name="news" value=""/>
+		<put-attribute name="announcement" value=""/>
+	</definition>
+	<definition name="administratorHome.jsp" extends="baselayout">
+		<put-attribute name="body" value="/administratorHome.jsp"/>
+	</definition>
+	<definition name="studentHome.jsp" extends="baselayout">
+		<put-attribute name="body" value="/studentHome.jsp"/>
+	</definition>
 			
 </tiles-definitions>
