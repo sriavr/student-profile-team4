@@ -24,6 +24,13 @@
 			<result name="studentLoginSuccess" type="tiles">studentHome.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
+		<!--   Added by Debargha Ganguly(MT2012039) conatains Grades Page -->
+		<action name="gradeAction" class ="com.studentProfile.action.GradesAction" >
+			<result name="success" type="tiles">grades.jsp</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+		
+		<!--   end of addition Debargha Ganguly(MT2012039) -->
 	
 	</package>
 	
