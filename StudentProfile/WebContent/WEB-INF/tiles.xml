@@ -33,5 +33,10 @@
 	<definition name="studentHome.jsp" extends="baselayout">
 		<put-attribute name="body" value="/studentHome.jsp"/>
 	</definition>
-			
+	
+	<!-- Added by Debargha Ganguly-Grades Page -->
+	<definition name="grades.jsp" extends="baselayout">
+		<put-attribute name="body" value="/grades.jsp"/>
+	</definition>
+	<!-- End of addition -->		
 </tiles-definitions>
