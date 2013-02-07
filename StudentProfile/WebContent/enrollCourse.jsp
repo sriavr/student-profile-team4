@@ -24,8 +24,8 @@
 				<%-- <s:if test="enrollButton=='selectSem'"> --%>
 					
 						
-							 <s:select list="sem" headerKey="0" headerValue="-select-" name="semID" 
-								listKey="semID" listValue="semName" label="" onchange="this.form.submit();">
+							 <s:select list="sem" headerKey="-1" headerValue="-select-" name="semID" 
+								listKey="semID" listValue="semName" label=""   onchange="this.form.submit();">
 							</s:select> 
 						
 						
@@ -33,14 +33,11 @@
 								 <s:checkboxlist list="subject" listKey="subID" listValue="subName" 
 								 	name="selectedCourse" label="Courses" required="true">
 								 </s:checkboxlist> 
+								 
+								 <s:submit name="enrollButton" value="Submit" ></s:submit>
 								
 							</s:if>
 								
-						
-					
-					
-			
-			<s:submit name="enrollButton" value="Submit" ></s:submit>
 			
 		</s:form>
 		
