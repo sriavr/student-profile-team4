@@ -38,5 +38,22 @@
 	<definition name="grades.jsp" extends="baselayout">
 		<put-attribute name="body" value="/grades.jsp"/>
 	</definition>
-	<!-- End of addition -->		
+	<!-- End of addition -->
+	
+	<!-- Added by Pratibind Jha(MT2012100) enrollCourse-show-sem  -->
+	<definition name="enrollcourseShowSem.jsp" extends="baselayout">
+		<put-attribute name="body" value="/enrollCourse.jsp"/>
+		<put-attribute name="header" value=""/>
+		<put-attribute name="left" value=""/>
+		<put-attribute name="news" value=""/>
+		<put-attribute name="announcement" value=""/>
+	</definition>
+	<definition name="subjects.jsp" extends="baselayout">
+		<put-attribute name="body" value="/subjects.jsp"/>
+		<put-attribute name="header" value=""/>
+		<put-attribute name="left" value=""/>
+		<put-attribute name="news" value=""/>
+		<put-attribute name="announcement" value=""/>
+	</definition>
+	<!-- End of Definition -->		
 </tiles-definitions>
