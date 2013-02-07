@@ -178,6 +178,10 @@ public class EnrollCourseAction extends ActionSupport {
 		else {
 			this.setEnrollButton("showSubject");
 			System.out.println("SemID id :" + this.getSemID());
+			if (this.getSemID() == -1) {
+				addActionMessage("Please Select Semester");
+				return "success";
+			}
 			this.setSubject(EnrollCourseDAO.showSubjectInfo(this.getSemID()));
 			if (this.subject.isEmpty()) {
 				System.out.println("subject is Empty");
