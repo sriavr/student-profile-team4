@@ -29,8 +29,30 @@
 			<result name="success" type="tiles">grades.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
+		<action name="manageAnouncementsAction" class ="com.studentProfile.action.ManageAnouncementsAction" >
+			<result name="success" type="tiles">manageAnouncements.jsp</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+		
+		<action name="saveAnouncements" class ="com.studentProfile.action.ManageAnouncementsSaveAction" >
+			<result name="success" type="redirectAction">manageAnouncementsAction</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+		
+		<action name="manageNewsAction" class ="com.studentProfile.action.ManageNewsAction" >
+			<result name="success" type="tiles">manageNews.jsp</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+		
+		<action name="saveNews" class ="com.studentProfile.action.ManageNewsSaveAction" >
+			<result name="success" type="redirectAction">manageNewsAction</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
 		
 		<!--   end of addition Debargha Ganguly(MT2012039) -->
+
+		
+	
 		
 		<!-- Added by Pratibind Jha(MT2012100) show semester list in enrollCourse.jsp -->
 		<action name="enrollCourseShowSemAction" class="com.studentProfile.action.EnrollCourseAction" method="showSemester">
@@ -46,6 +68,7 @@
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
 		<!-- end of Addition Pratibind Jha(MT2012100)  -->
+
 	</package>
 	
 </struts>
