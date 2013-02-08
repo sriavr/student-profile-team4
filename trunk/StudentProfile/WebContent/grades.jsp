@@ -27,7 +27,7 @@
  </td>
    <td>
    
-  <s:select list="semesterList" listKey="semId" listValue="semName" headerKey="0" headerValue="--Select Semester--"
+  <s:select list="semesterList" listKey="semID" listValue="semName" headerKey="0" headerValue="--Select Semester--"
 							name="selectedSemesterId" cssClass="label" theme="simple" onchange="javascript:refresh();"/>
    
    
@@ -35,7 +35,7 @@
 <td>
   Subject
 </td>
-<td>   <s:select list="subjectList" listKey="subId" listValue="subName"
+<td>   <s:select list="subjectList" listKey="subID" listValue="subName"
 							headerKey="0" headerValue="--All--"
 							name="selectedSubjectId" cssClass="label" theme="simple" onchange="javascript:refresh();"/>    </td>
    
