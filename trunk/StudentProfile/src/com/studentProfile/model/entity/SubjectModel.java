@@ -2,12 +2,13 @@ package com.studentProfile.model.entity;
 
 public class SubjectModel {
 	
-	private int subId;
-	public int getSubId() {
-		return subId;
+	private int subID;
+	
+	public int getSubID() {
+		return subID;
 	}
-	public void setSubId(int subId) {
-		this.subId = subId;
+	public void setSubID(int subID) {
+		this.subID = subID;
 	}
 	public String getSubCode() {
 		return subCode;
@@ -27,23 +28,24 @@ public class SubjectModel {
 	public void setSubSyllabus(String subSyllabus) {
 		this.subSyllabus = subSyllabus;
 	}
-	public int getSemId() {
-		return semId;
-	}
-	public void setSemId(int semId) {
-		this.semId = semId;
-	}
-	public int getFacId() {
-		return facId;
-	}
-	public void setFacId(int facId) {
-		this.facId = facId;
-	}
+	
 	private String subCode;
 	private String subName;
 	private String subSyllabus;
-	private int semId;
-	private int facId;
+	private int semID;
+	private int facID;
+	public int getSemID() {
+		return semID;
+	}
+	public void setSemID(int semID) {
+		this.semID = semID;
+	}
+	public int getFacID() {
+		return facID;
+	}
+	public void setFacID(int facID) {
+		this.facID = facID;
+	}
 	
 	
 
