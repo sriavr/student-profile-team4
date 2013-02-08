@@ -9,8 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
 
-import com.studentProfile.model.SemesterModel;
-import com.studentProfile.model.SubjectModel;
+import com.studentProfile.model.entity.SemesterModel;
+import com.studentProfile.model.entity.SubjectModel;
 
 /**
  * @author Pratibind Kumar Jha
