@@ -2,14 +2,15 @@ package com.studentProfile.model.entity;
 
 public class SemesterModel {
 	
-	private int semId;
+	private int semID;
+	public int getSemID() {
+		return semID;
+	}
+	public void setSemID(int semID) {
+		this.semID = semID;
+	}
 	private String semName;
-	public int getSemId() {
-		return semId;
-	}
-	public void setSemId(int semId) {
-		this.semId = semId;
-	}
+	
 	public String getSemName() {
 		return semName;
 	}
