@@ -13,8 +13,8 @@ import java.util.Map;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.studentProfile.DAO.EnrollCourseDAO;
-import com.studentProfile.model.SemesterModel;
-import com.studentProfile.model.SubjectModel;
+import com.studentProfile.model.entity.SemesterModel;
+import com.studentProfile.model.entity.SubjectModel;
 
 public class EnrollCourseAction extends ActionSupport {
 
