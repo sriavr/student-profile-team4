@@ -20,7 +20,7 @@ public class GradesDAO extends BaseDAO {
 		 while(rs.next())
 		 {
 			 SemesterModel semesterModel =  new SemesterModel();
-			 semesterModel.setSemId(rs.getInt(1));
+			 semesterModel.setSemID(rs.getInt(1));
 			 semesterModel.setSemName(rs.getString(2));
 			 semesters.add(semesterModel);
 			 
@@ -51,7 +51,7 @@ public class GradesDAO extends BaseDAO {
 		 while(rs.next())
 		 {
 			 SubjectModel subjectModel =  new SubjectModel();
-			 subjectModel.setSubId(rs.getInt(1));
+			 subjectModel.setSubID(rs.getInt(1));
 			 subjectModel.setSubName(rs.getString(3));
 			 subjectModel.setSubCode(rs.getString(2));
 			 subjectModel.setSubSyllabus(rs.getString(4));
