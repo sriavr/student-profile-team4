@@ -24,6 +24,32 @@
 			<result name="studentLoginSuccess" type="tiles">studentHome.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
+		<action name="studentHomeAction" class ="com.studentProfile.action.ForwardAction" method="studentHome">
+			<result name="success" type="tiles">studentHome.jsp</result>
+			<result name="failure" type="tiles">error.jsp</result>
+		</action>
+		
+		<action name="myProfileAction" class ="com.studentProfile.action.LeftPaneAction" >
+			<result name="success" type="tiles">myProfile.jsp</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+		
+		<action name="profilePicAction" class ="com.studentProfile.action.LeftPaneAction" method="profilePic" >
+			<result name="success" type="tiles">myProfile.jsp</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+		<action name="announcementsAction" class ="com.studentProfile.action.AnnouncementsAction"  >
+			<result name="success" type="tiles">announcements.jsp</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+		<action name="newsAction" class ="com.studentProfile.action.NewsAction"  >
+			<result name="success" type="tiles">news.jsp</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+		<action name="manageSubjectsAction" class ="com.studentProfile.action.ManageSubjectsAction"  >
+			<result name="success" type="tiles">manageSubjectsAction.jsp</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
 		<!--   Added by Debargha Ganguly(MT2012039) conatains Grades Page -->
 		<action name="gradeAction" class ="com.studentProfile.action.GradesAction" >
 			<result name="success" type="tiles">grades.jsp</result>

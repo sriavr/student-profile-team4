@@ -14,7 +14,7 @@ public class StudentModel {
 	private Integer intID;
 	private String stuName;
 	private String stuPassword;
-	private File stuPhoto;
+	private byte[] stuPhoto;
 	private Timer stuLoggedIn;
 	private String stuRollNo;
 	private Date stuDOB;
@@ -51,12 +51,10 @@ public class StudentModel {
 		this.stuPassword = stuPassword;
 	}
 
-	public File getStuPhoto() {
-		return stuPhoto;
-	}
 
-	public void setStuPhoto(File stuPhoto) {
-		this.stuPhoto = stuPhoto;
+
+	public byte[] getStuPhoto() {
+		return stuPhoto;
 	}
 
 	public Timer getStuLoggedIn() {
@@ -81,6 +79,10 @@ public class StudentModel {
 
 	public void setStuDOB(Date stuDOB) {
 		this.stuDOB = stuDOB;
+	}
+
+	public void setStuPhoto(byte[] stuPhoto) {
+		this.stuPhoto = stuPhoto;
 	}
 
 }
