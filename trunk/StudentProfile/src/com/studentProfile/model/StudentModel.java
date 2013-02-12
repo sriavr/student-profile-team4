@@ -3,21 +3,32 @@ package com.studentProfile.model;
 import java.io.File;
 import java.util.Date;
 import java.util.Timer;
+
+import org.apache.catalina.User;
+
 /**
  * 
- * @author svkris
- *
- *Model class for student
+ * @author svkris, modified by Sridhar
+ * 
+ *         Model class for student
  */
 public class StudentModel {
 	private Integer stuID;
-	private Integer intID;
 	private String stuName;
-	private String stuPassword;
 	private byte[] stuPhoto;
 	private Timer stuLoggedIn;
 	private String stuRollNo;
 	private Date stuDOB;
+
+	private UserModel user = new UserModel();
+
+	public UserModel getUser() {
+		return user;
+	}
+
+	public void setUser(UserModel user) {
+		this.user = user;
+	}
 
 	public Integer getStuID() {
 		return stuID;
@@ -27,28 +38,12 @@ public class StudentModel {
 		this.stuID = stuID;
 	}
 
-	public Integer getIntID() {
-		return intID;
-	}
-
-	public void setIntID(Integer intID) {
-		this.intID = intID;
-	}
-
 	public String getStuName() {
 		return stuName;
 	}
 
 	public void setStuName(String stuName) {
 		this.stuName = stuName;
-	}
-
-	public String getStuPassword() {
-		return stuPassword;
-	}
-
-	public void setStuPassword(String stuPassword) {
-		this.stuPassword = stuPassword;
 	}
 
 
