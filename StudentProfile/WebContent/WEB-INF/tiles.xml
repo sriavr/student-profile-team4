@@ -34,6 +34,14 @@
 		<put-attribute name="body" value="/studentHome.jsp"/>
 	</definition>
 	
+	<definition name="myProfile.jsp" extends="baselayout">
+		<put-attribute name="body" value="/myProfile.jsp"/>
+	</definition>
+	
+	<definition name="studentHome.jsp" extends="baselayout">
+		<put-attribute name="body" value="/studentHome.jsp"/>
+	</definition>
+	
 	<!-- Added by Debargha Ganguly-Grades Page -->
 	<definition name="grades.jsp" extends="baselayout">
 		<put-attribute name="body" value="/grades.jsp"/>
@@ -50,17 +58,9 @@
 	<!-- Added by Pratibind Jha(MT2012100) enrollCourse-show-sem  -->
 	<definition name="enrollcourseShowSem.jsp" extends="baselayout">
 		<put-attribute name="body" value="/enrollCourse.jsp"/>
-		<put-attribute name="header" value=""/>
-		<put-attribute name="left" value=""/>
-		<put-attribute name="news" value=""/>
-		<put-attribute name="announcement" value=""/>
 	</definition>
 	<definition name="subjects.jsp" extends="baselayout">
 		<put-attribute name="body" value="/subjects.jsp"/>
-		<put-attribute name="header" value=""/>
-		<put-attribute name="left" value=""/>
-		<put-attribute name="news" value=""/>
-		<put-attribute name="announcement" value=""/>
 	</definition>
 	<!-- End of Definition -->		
 

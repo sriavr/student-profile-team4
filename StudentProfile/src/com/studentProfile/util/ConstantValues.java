@@ -13,7 +13,7 @@ package com.studentProfile.util;
 public class ConstantValues {
 	public static String connectionString = "jdbc:mysql://localhost:3306/studentprofile";
 	public static String databaseUser = "root";
-	public static String databasePassword = "root";
+	public static String databasePassword = "123456";
 	public static String administrator = "administrator";
 	public static String student = "student";
 

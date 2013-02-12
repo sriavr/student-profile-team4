@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,6 +8,11 @@
 <title>News Page</title>
 </head>
 <body>
-	News Page
+	<s:action name="newsAction"/>
+	<marquee direction="up" loop="true" width="100%"> 
+		<s:iterator value="%{#session.newsList}" var="news">
+			<s:property value="%{#news}"/><br>
+		</s:iterator>
+	 </marquee>
 </body>
 </html>

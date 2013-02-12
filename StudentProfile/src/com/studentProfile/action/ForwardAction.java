@@ -24,4 +24,9 @@ public class ForwardAction extends ActionSupport {
 		LogMessage.log("Message From ForwardAction.login: I am here :)");
 		return Action.SUCCESS;
 	}
+	
+	public String studentHome() {
+		LogMessage.log("Message From ForwardAction.studentHome: I am here :)");
+		return Action.SUCCESS;
+	}
 }

@@ -49,7 +49,7 @@
 	}
 </style>
 </head>
-<body>
+<body style="background-color: gray;">
 		<div id="header">
 		<tiles:insertAttribute name="header" />
 	</div>

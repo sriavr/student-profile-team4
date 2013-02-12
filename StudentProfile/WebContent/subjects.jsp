@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="css/enrollTable.css">
+<link rel="stylesheet" href="css/table_new.css">
 <title>Subjects</title>
 </head>
 <body>
@@ -29,20 +29,20 @@
 			
 		</s:form>
 		
-		<table id="datatable">
+		<table id="datatable" class="imagetable" >
 			<tr>
 				
-				<th id="th_background"><s:text name="Subject_Code"/></th>
-				<th id="th_background"><s:text name="Subject"/></th>
-				<th id="th_background"><s:text name="Faculty_name" /></th>
-				<th id="th_background"><s:text name="Sem" /></th>
-				<th id="th_background"><s:text name="Enrolled"/></th>
-				<th id="th_background"><s:text name="Grade"/></th>
+				<th id="th_background" width="170"><s:text name="Subject_Code"/></th>
+				<th id="th_background" width="170"><s:text name="Subject"/></th>
+				<th id="th_background" width="170"><s:text name="Faculty_name" /></th>
+				<th id="th_background" width="170"><s:text name="Sem" /></th>
+				<th id="th_background" width="170"><s:text name="Enrolled"/></th>
+				<th id="th_background" width="170"><s:text name="Grade"/></th>
 				
 			</tr>
 			<s:iterator value="subjectsInfo" status="status">
 				
-				<tr class="<s:if test="#status.even">even</s:if><s:else>odd</s:else>">
+				<tr >
 				
 					<td><a href="<s:url action="subjectsAction">
 						<s:param name="subCode" value="subCode"/>
