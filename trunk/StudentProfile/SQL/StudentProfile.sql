@@ -198,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `student` (
   `stuLoggedIn` time DEFAULT NULL,
   `stuRollNo` varchar(10) NOT NULL,
   `stuDOB` date DEFAULT NULL,
-  PRIMARY KEY (`stuID`) USING HASH,
+  PRIMARY KEY (`stuID`),
   CONSTRAINT  UNIQUE (`stuRollNo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COMMENT='Student Table';
 
