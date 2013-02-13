@@ -131,13 +131,13 @@ public class SubjectsAction extends ActionSupport {
 
 		// get the user information from session object.
 		//studentID = 1;
-		String roll="";
+		String role="";
 		session = ActionContext.getContext().getSession();
-		roll = (String)session.get("role");
+		role = (String)session.get("role");
 		StudentModel student = (StudentModel) session.get("student");
-		if (roll.equalsIgnoreCase("student")) {
+		if (role.equalsIgnoreCase("student")) {
 			studentID = student.getStuID();
-			System.out.println("Roll is: "+ roll+" Student ID "+ studentID);
+			System.out.println("Roll is: "+ role+" Student ID "+ studentID);
 		} else {
 			addActionMessage("There is no subject for Admin");
 			return "success";
