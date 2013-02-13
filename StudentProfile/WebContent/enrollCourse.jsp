@@ -19,7 +19,7 @@
 <body>
 		
 		<s:actionmessage/> 
-		<s:form name="enrollForm" action="enrollCourseShowCourseAction" method="post">
+		<s:form name="enrollForm" action="enrollCourseShowCourseAction" method="post" theme="simple">
 			
 				<%-- <s:if test="enrollButton=='selectSem'"> --%>
 					
@@ -27,17 +27,17 @@
 							 <s:select list="sem" headerKey="-1" headerValue="-select-" name="semID" 
 								listKey="semID" listValue="semName" label=""   onchange="this.form.submit();">
 							</s:select> 
-						
-						
+							
 							<s:if test="enrollButton=='showSubject'">
-								 <s:checkboxlist list="subject" listKey="subID" listValue="subName" 
-								 	name="selectedCourse" label="Courses" required="true">
-								 </s:checkboxlist> 
-								 
-								 <s:submit name="enrollButton" value="Submit" ></s:submit>
-								
+								<div  style="overflow: auto; height: 50px;width:120px;">
+									
+										 <s:checkboxlist list="subject" listKey="subID" listValue="subName" 
+										 	name="selectedCourse" label="Courses" required="true">
+										 </s:checkboxlist> 
+										
+								</div>	
+								<s:submit name="enrollButton" value="Submit" ></s:submit>
 							</s:if>
-								
 			
 		</s:form>
 		
