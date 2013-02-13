@@ -30,8 +30,7 @@
 		<a href="subjectsAction">Subjects</a>&nbsp;&nbsp;
 		<a href="enrollCourseShowSemAction">Enroll</a>&nbsp;&nbsp;
 		<a href="myfriendAction">MyFriends</a>&nbsp;&nbsp;
-		<s:submit action="logout.action" label="Logout">
-		</s:submit>
+		<a href="logoutAction">Logout</a>
 	</div>
 	</s:if>
 	<s:else>
@@ -48,4 +47,4 @@
 	</s:else>
 	</div>
 </body>
-</html>
+</html>	
