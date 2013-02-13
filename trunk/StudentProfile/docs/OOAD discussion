@@ -1,0 +1,45 @@
+Separate table for admin
+Separate table for user, refer FK from student
+Should admin be a student
+
+
+user table
+username, password, role
+mt2012138, *****, student
+admin01, ****, admin
+
+student table
+name, login time, photo, dob, int id, ID (FK)
+
+user 
+	username, password, role (admin/student)
+
+student 
+	stuID, stuName, stuPhoto, stuLoggedin, stuRollNo, stuPassword, stuDOB
+
+admin
+	username, password
+
+mapStudentInterest table
+	mapID, stuID, intID
+
+
+enrollduration
+	enrID, strDate, endDate, subID, semID
+
+ 
+1. We should create one more table(enrollduration) in order to check if the enrolment time is completed. i.e a student should be able to enroll within the enrollment period only.
+This table should be an association table between subject table and semester table with attributes enrStartTime and enrEndTime
+
+2. Create admin table for authentication of administrators
+
+3. Create an association table b/w subject and faculty
+This table is used in view faculties per subject usecase and in some other usecases where faculty is involved.
+
+4. Modify existing subject table.-- remove faulty id as a subject can be taught by more than one faculty
+
+5. Naming conventions and coding standards should be followed strictly
+
+6. The uploaded Database scripts should be checked and corected if there are any errors. (in fact there are minor errors :))
+
+
