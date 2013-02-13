@@ -66,6 +66,7 @@
 	</definition>
 
 	<!-- End Of addition -->
+	
 	<!-- Added by Pratibind Jha(MT2012100) enrollCourse-show-sem -->
 	<definition name="enrollcourseShowSem.jsp" extends="baselayout">
 		<put-attribute name="body" value="/enrollCourse.jsp" />
@@ -75,4 +76,10 @@
 	</definition>
 	<!-- End of Definition -->
 
+	<!-- Added by ranadheer (MT2012060) manageUsers page -->
+	<definition name="manageUsers.jsp" extends="baselayout">
+		<put-attribute name="body" value="/manageUsers.jsp"/>
+	</definition>
+	<!-- End of addition -->
+	
 </tiles-definitions>
