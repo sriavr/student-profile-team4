@@ -20,6 +20,19 @@ public class StudentModel {
 	private Date stuLoggedIn;
 	private String stuRollNo;
 	private Date stuDOB;
+	
+	public StudentModel(){
+		
+	}
+	public StudentModel(Integer stuID, String stuName,byte[] stuPhoto,String stuPassword,Date stuLoggedIn,String stuRollNo,Date stuDOB){
+		this.stuID = stuID;
+		this.stuName = stuName;
+		this.stuPassword = stuPassword;
+		this.stuPhoto = stuPhoto;
+		this.stuLoggedIn = stuLoggedIn;
+		this.stuRollNo = stuRollNo;
+		this.stuDOB = stuDOB;
+	}
 
 	public String getStuPassword() {
 		return stuPassword;
