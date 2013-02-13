@@ -9,7 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.studentProfile.model.entity.SemesterModel;
+import com.studentProfile.model.entity.StudentModel;
 import com.studentProfile.model.entity.SubjectModel;
 
 /**
@@ -57,20 +59,19 @@ public class EnrollCourseDAO {
 		// get the student id from session object.
 		Map<String, Object> session;
 		int studentID;
-
+		String role="";
+		studentID = 0;
+		
 		// get the user information from session object.
-		/*
 		session = ActionContext.getContext().getSession();
-		UserModel user = (UserModel) session.get("user");
-		StudentModel student = (StudentModel) session.get("session");
-		if (user.getRole().equalsIgnoreCase("student")) {
+		role = (String)session.get("role");
+		StudentModel student = (StudentModel)session.get("student");
+		System.out.println("Roll is: "+ role+" Student ID "+ student.getStuID());
+		if (role.equalsIgnoreCase("student")) {
 			studentID = student.getStuID();
-		} else {
-			addActionMessage("There is no subject for Admin");
-			return "success";
-		}
-		 */ 
-		studentID = 2;
+			System.out.println("Roll is: "+ role+" Student ID "+ studentID);
+		} 
+		
 		String query = "SELECT * FROM subject WHERE NOT EXISTS (SELECT enrID FROM enrollment "
 				+ "WHERE subject.subID=enrollment.subID and enrollment.stuID="
 				+ studentID + ") AND subject.semID=" + semID;
