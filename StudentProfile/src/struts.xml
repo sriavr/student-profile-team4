@@ -28,6 +28,10 @@
 			</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
+		<action name="viewSyllabus" class="com.studentProfile.action.ViewSyllabusAction">
+			<result name="success" type="tiles">viewSyllabus.jsp</result>
+			<result name="failure" type="tiles">error.jsp</result>
+		</action>
 
 		<!-- Added by Sridhar Jammalamadaka (MT2012138) enrollCourse-show-sem -->
 
