@@ -4,14 +4,9 @@ package com.studentProfile.action;
 
 import java.util.ArrayList;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.studentProfile.DAO.GradesDAO;
 import com.studentProfile.DAO.MyFriendsDAO;
-import com.studentProfile.model.StudentModel;
-import com.studentProfile.model.entity.SemesterModel;
-import com.studentProfile.model.entity.SubjectModel;
-import com.studentProfile.model.page.GradesModel;
+import com.studentProfile.model.entity.StudentModel;
 
 public class MyFriendsAction extends ActionSupport {
    
