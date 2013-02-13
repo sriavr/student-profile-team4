@@ -2,7 +2,6 @@ package com.studentProfile.DAO;
 
 import java.util.ArrayList;
 
-import com.studentProfile.model.UserModel;
 import com.studentProfile.model.entity.FacultyModel;
 import com.studentProfile.model.entity.SubjectModel;
 import com.studentProfile.util.DatabaseUtil;
