@@ -3,7 +3,13 @@ package com.studentProfile.model.entity;
 public class SubjectModel {
 	
 	private int subID;
-	
+	private boolean selected;
+	public boolean isSelected() {
+		return selected;
+	}
+	public void setSelected(boolean selected) {
+		this.selected = selected;
+	}
 	public int getSubID() {
 		return subID;
 	}
