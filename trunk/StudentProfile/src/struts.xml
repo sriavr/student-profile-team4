@@ -71,6 +71,7 @@
 			<result name="success" type="tiles">manageSubjectsAction.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
+		
 		<!-- Added by Debargha Ganguly(MT2012039) conatains Grades Page -->
 		<action name="gradeAction" class="com.studentProfile.action.GradesAction">
 			<result name="success" type="tiles">grades.jsp</result>
@@ -120,7 +121,27 @@
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
 		<!-- end of Addition Pratibind Jha(MT2012100) -->
-
+		
+		<!-- Added by Ranadheer(MT2012060) conatains manageUsers Page -->
+		
+		<action name="manageUsersAction" class ="com.studentProfile.action.ManageUsersAction" method="manageUsers">
+			<result name="success" type="tiles">manageUsers.jsp</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+		
+		<action name="manageUsersUpdationAction" class ="com.studentProfile.action.ManageUsersAction" method="manageUsersUpdation">
+			<result name="success" type="tiles">manageUsers.jsp</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+		
+		<action name="manageUsersRemoveAction" class ="com.studentProfile.action.ManageUsersAction" method="manageUsersRemove">
+			<result name="success" type="tiles">manageUsers.jsp</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+	
+		<!-- end of Addition Ranadheer(MT2012060) -->
+		
+		
 	</package>
 
 </struts>
