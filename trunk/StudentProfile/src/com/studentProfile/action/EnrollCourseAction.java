@@ -11,9 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.studentProfile.DAO.EnrollCourseDAO;
 import com.studentProfile.model.entity.SemesterModel;
+import com.studentProfile.model.entity.StudentModel;
 import com.studentProfile.model.entity.SubjectModel;
 
 public class EnrollCourseAction extends ActionSupport {
@@ -142,20 +144,22 @@ public class EnrollCourseAction extends ActionSupport {
 			}
 			Map<String, Object> session;
 			int studentID;
-			String role;
+			String role="";
+			//studentID = 2;
+			
 			// get the user information from session object.
-
-			/*session = ActionContext.getContext().getSession();
-			UserModel user = (UserModel) session.get("user");
-			StudentModel student = (StudentModel) session.get("session");
-			if (user.getRole().equalsIgnoreCase("student")) {
+			session = ActionContext.getContext().getSession();
+			role = (String)session.get("role");
+			StudentModel student = (StudentModel) session.get("student");
+			if (role.equalsIgnoreCase("student")) {
 				studentID = student.getStuID();
+				System.out.println("Roll is: "+ role+" Student ID "+ studentID);
 			} else {
 				addActionMessage("There is no subject for Admin");
 				return "success";
 			}
-			*/
-			studentID = 2;
+			
+			
 			for (int i = 0; i < this.selectedCourse.size(); i++) {
 				System.out.println(this.selectedCourse.get(i));
 				msg = msg + this.selectedCourse.get(i) + ",";
