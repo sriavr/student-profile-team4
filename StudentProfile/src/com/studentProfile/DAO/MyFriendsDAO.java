@@ -1,13 +1,7 @@
 package com.studentProfile.DAO;
 import java.util.ArrayList;
 
-import com.studentProfile.model.StudentModel;
-
-//import sun.text.normalizer.CharTrie.FriendAgent;
-
-
-
-import com.studentProfile.model.StudentModel;
+import com.studentProfile.model.entity.StudentModel;
 import com.studentProfile.util.DatabaseUtil;
 import com.studentProfile.util.LogMessage;
 
