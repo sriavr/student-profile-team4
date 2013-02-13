@@ -5,11 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Logged out</title>
 </head>
 <body>
+	<h1>Successfully logged out of Student Profile Website</h1>
 
-	<s:action name="login" executeResult="true"></s:action>
+	<s:submit action="login.action" label="Login"></s:submit>
 
 </body>
 </html>

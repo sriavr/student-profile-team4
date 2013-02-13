@@ -5,96 +5,122 @@
 
 <struts>
 	<package name="default" extends="struts-default">
-		
+
 		<result-types>
 			<result-type name="tiles"
 				class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
-		
-		<action name="indexForwardAction" class ="com.studentProfile.action.ForwardAction" method="index">
+
+		<action name="indexForwardAction" class="com.studentProfile.action.ForwardAction"
+			method="index">
 			<result name="success" type="tiles">welcome.jsp</result>
 			<result name="failure" type="tiles">error.jsp</result>
 		</action>
-		<action name="login" class ="com.studentProfile.action.ForwardAction" method="login">
+		<action name="login" class="com.studentProfile.action.ForwardAction"
+			method="login">
 			<result name="success" type="tiles">login.jsp</result>
 			<result name="failure" type="tiles">error.jsp</result>
 		</action>
-		<action name="loginAction" class ="com.studentProfile.action.LoginAction" >
-			<result name="adminLoginSuccess" type="tiles">administratorHome.jsp</result>
-			<result name="studentLoginSuccess" type="tiles">studentHome.jsp</result>
+		<action name="loginAction" class="com.studentProfile.action.LoginAction">
+			<result name="adminLoginSuccess" type="tiles">administratorHome.jsp
+			</result>
+			<result name="studentLoginSuccess" type="tiles">studentHome.jsp
+			</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-		<action name="studentHomeAction" class ="com.studentProfile.action.ForwardAction" method="studentHome">
+
+		<!-- Added by Sridhar Jammalamadaka (MT2012138) enrollCourse-show-sem -->
+
+		<action name="assignFacSub"
+			class="com.studentProfile.action.AssignFacultySubjectAction">
+			<result name="assign" type="tiles">assignFacultySubject.jsp
+			</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+		<action name="logoutAction" class="com.studentProfile.action.LogoutAction">
+			<result name="success" type="tiles">logout.jsp
+			</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+		<!-- End of Definition -->
+		<action name="studentHomeAction" class="com.studentProfile.action.ForwardAction"
+			method="studentHome">
 			<result name="success" type="tiles">studentHome.jsp</result>
 			<result name="failure" type="tiles">error.jsp</result>
 		</action>
-		
-		<action name="myProfileAction" class ="com.studentProfile.action.LeftPaneAction" >
+
+		<action name="myProfileAction" class="com.studentProfile.action.LeftPaneAction">
 			<result name="success" type="tiles">myProfile.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-		
-		<action name="profilePicAction" class ="com.studentProfile.action.LeftPaneAction" method="profilePic" >
+
+		<action name="profilePicAction" class="com.studentProfile.action.LeftPaneAction"
+			method="profilePic">
 			<result name="success" type="tiles">myProfile.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-		<action name="announcementsAction" class ="com.studentProfile.action.AnnouncementsAction"  >
+		<action name="announcementsAction" class="com.studentProfile.action.AnnouncementsAction">
 			<result name="success" type="tiles">announcements.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-		<action name="newsAction" class ="com.studentProfile.action.NewsAction"  >
+		<action name="newsAction" class="com.studentProfile.action.NewsAction">
 			<result name="success" type="tiles">news.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-		<action name="manageSubjectsAction" class ="com.studentProfile.action.ManageSubjectsAction"  >
+		<action name="manageSubjectsAction" class="com.studentProfile.action.ManageSubjectsAction">
 			<result name="success" type="tiles">manageSubjectsAction.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-		<!--   Added by Debargha Ganguly(MT2012039) conatains Grades Page -->
-		<action name="gradeAction" class ="com.studentProfile.action.GradesAction" >
+		<!-- Added by Debargha Ganguly(MT2012039) conatains Grades Page -->
+		<action name="gradeAction" class="com.studentProfile.action.GradesAction">
 			<result name="success" type="tiles">grades.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-		<action name="manageAnouncementsAction" class ="com.studentProfile.action.ManageAnouncementsAction" >
+		<action name="manageAnouncementsAction"
+			class="com.studentProfile.action.ManageAnouncementsAction">
 			<result name="success" type="tiles">manageAnouncements.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-		
-		<action name="saveAnouncements" class ="com.studentProfile.action.ManageAnouncementsSaveAction" >
+
+		<action name="saveAnouncements"
+			class="com.studentProfile.action.ManageAnouncementsSaveAction">
 			<result name="success" type="redirectAction">manageAnouncementsAction</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-		
-		<action name="manageNewsAction" class ="com.studentProfile.action.ManageNewsAction" >
+
+		<action name="manageNewsAction" class="com.studentProfile.action.ManageNewsAction">
 			<result name="success" type="tiles">manageNews.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-		
-		<action name="saveNews" class ="com.studentProfile.action.ManageNewsSaveAction" >
+
+		<action name="saveNews" class="com.studentProfile.action.ManageNewsSaveAction">
 			<result name="success" type="redirectAction">manageNewsAction</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-		
-		<!--   end of addition Debargha Ganguly(MT2012039) -->
 
-		
-	
-		
+		<!-- end of addition Debargha Ganguly(MT2012039) -->
+
+
+
+
 		<!-- Added by Pratibind Jha(MT2012100) show semester list in enrollCourse.jsp -->
-		<action name="enrollCourseShowSemAction" class="com.studentProfile.action.EnrollCourseAction" method="showSemester">
+		<action name="enrollCourseShowSemAction" class="com.studentProfile.action.EnrollCourseAction"
+			method="showSemester">
 			<result name="success" type="tiles">enrollcourseShowSem.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-		<action name="enrollCourseShowCourseAction" class="com.studentProfile.action.EnrollCourseAction" method="showSubject">
+		<action name="enrollCourseShowCourseAction" class="com.studentProfile.action.EnrollCourseAction"
+			method="showSubject">
 			<result name="success" type="tiles">enrollcourseShowSem.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-		<action name="subjectsAction" class="com.studentProfile.action.SubjectsAction" method="showSubjectInfo">
+		<action name="subjectsAction" class="com.studentProfile.action.SubjectsAction"
+			method="showSubjectInfo">
 			<result name="success" type="tiles">subjects.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-		<!-- end of Addition Pratibind Jha(MT2012100)  -->
+		<!-- end of Addition Pratibind Jha(MT2012100) -->
 
 	</package>
-	
+
 </struts>
