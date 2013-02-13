@@ -60,12 +60,16 @@ public class EnrollCourseDAO {
 
 		// get the user information from session object.
 		/*
-		 * session = ActionContext.getContext().getSession(); String role =
-		 * (String) session.get("role");
-		 * 
-		 * if (role.equals("student")) { studentID = ((StudentModel)
-		 * session.get("user")).getStuID(); }
-		 */
+		session = ActionContext.getContext().getSession();
+		UserModel user = (UserModel) session.get("user");
+		StudentModel student = (StudentModel) session.get("session");
+		if (user.getRole().equalsIgnoreCase("student")) {
+			studentID = student.getStuID();
+		} else {
+			addActionMessage("There is no subject for Admin");
+			return "success";
+		}
+		 */ 
 		studentID = 2;
 		String query = "SELECT * FROM subject WHERE NOT EXISTS (SELECT enrID FROM enrollment "
 				+ "WHERE subject.subID=enrollment.subID and enrollment.stuID="
