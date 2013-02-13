@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import com.studentProfile.util.LogMessage;
 
-
+ 
 
 public class AnnouncementsDAO extends BaseDAO{
 	public ArrayList<String> getAnnouncements(){
