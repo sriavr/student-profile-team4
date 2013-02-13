@@ -129,13 +129,16 @@ public class SubjectsAction extends ActionSupport {
 		// get the user information from session object.
 		studentID = 1;
 
-		/**
-		 * session = ActionContext.getContext().getSession(); String role =
-		 * (String) session.get("role");
-		 * 
-		 * if (role.equals("student")) { studentID = ((StudentModel)
-		 * session.get("user")).getStuID(); }
-		 */
+		/*session = ActionContext.getContext().getSession();
+		UserModel user = (UserModel) session.get("user");
+		StudentModel student = (StudentModel) session.get("session");
+		if (user.getRole().equalsIgnoreCase("student")) {
+			studentID = student.getStuID();
+		} else {
+			addActionMessage("There is no subject for Admin");
+			return "success";
+		}
+		*/
 
 		this.setSubjectsInfo(SubjectsDAO.getSubjectInfo(this.getCourse(),
 				studentID));
