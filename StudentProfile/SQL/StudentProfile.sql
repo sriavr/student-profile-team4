@@ -111,6 +111,18 @@ INSERT INTO `interests` (`intID`, `intName`) VALUES
 	(14, 'Hockey');
 /*!40000 ALTER TABLE `interests` ENABLE KEYS */;
 
+DROP TABLE IF EXISTS `mapStudentInterests`;
+CREATE TABLE IF NOT EXISTS `mapStudentInterests` (
+  `mapID` int(10) NOT NULL AUTO_INCREMENT,
+  `stuID` int(10) DEFAULT NULL,
+  `intID` int(10) DEFAULT NULL,
+  PRIMARY KEY(`mapID`),
+  KEY `FK_map_student` (`stuID`),
+  KEY `FK_map_interest` (`intID`),
+  KEY (`stuID`,`intID`),
+  CONSTRAINT `FK_map_student` FOREIGN KEY (`stuID`) REFERENCES `student` (`stuID`),
+  CONSTRAINT `FK_map_interest` FOREIGN KEY (`intID`) REFERENCES `interests` (`intID`)
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;
 
 -- Dumping structure for table studentprofile.news
 DROP TABLE IF EXISTS `news`;
@@ -228,6 +240,13 @@ CREATE TABLE IF NOT EXISTS `subject` (
   CONSTRAINT `FK_subject_faculty` FOREIGN KEY (`facID`) REFERENCES `faculty` (`facID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=212 DEFAULT CHARSET=latin1;
 
+-- Dumping data for table studentprofile.subject: ~0 rows (approximately)
+DELETE FROM `subject`;
+/*!40000 ALTER TABLE `subject` DISABLE KEYS */;
+INSERT INTO `subject` (`subID`, `subCode`, `subName`, `subSyllabus`, `semID`, `facID`) VALUES
+	(210, 'NC', 'Networking', 'Syllabus for Networking here', 1, 1),
+	(211, 'DB', 'DataBase', 'Syllabus for Database here', 2, 2);
+
 DROP TABLE IF EXISTS `mapSubjectFaculty`;
 CREATE TABLE IF NOT EXISTS `mapSubjectFaculty` (
   `mapSubFacID` int(10) NOT NULL AUTO_INCREMENT,
@@ -240,12 +259,21 @@ CREATE TABLE IF NOT EXISTS `mapSubjectFaculty` (
   CONSTRAINT `FK_map_subject` FOREIGN KEY (`subID`) REFERENCES `subject` (`subID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;
 
--- Dumping data for table studentprofile.subject: ~0 rows (approximately)
-DELETE FROM `subject`;
-/*!40000 ALTER TABLE `subject` DISABLE KEYS */;
-INSERT INTO `subject` (`subID`, `subCode`, `subName`, `subSyllabus`, `semID`, `facID`) VALUES
-	(210, 'NC', 'Networking', 'Syllabus for Networking here', 1, 1),
-	(211, 'DB', 'DataBase', 'Syllabus for Database here', 2, 2);
+DROP TABLE IF EXISTS `enrollduration`;
+CREATE TABLE IF NOT EXISTS `enrollduration` (
+  `enrID` int(10) NOT NULL AUTO_INCREMENT,
+  `semID` int(10) DEFAULT NULL,
+  `subID` int(10) DEFAULT NULL,
+  `strDate` DATETIME NOT NULL,
+  `endDate` DATETIME NOT NULL,
+  PRIMARY KEY(`enrID`),
+  KEY `FK_map_sub` (`subID`),
+  KEY `FK_map_sem` (`semID`),
+  CONSTRAINT `FK_map_sub` FOREIGN KEY (`subID`) REFERENCES `subject` (`subID`),
+  CONSTRAINT `FK_map_sem` FOREIGN KEY (`semID`) REFERENCES `semester` (`semID`)
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;
+
+
 /*!40000 ALTER TABLE `subject` ENABLE KEYS */;
 /*!40014 SET FOREIGN_KEY_CHECKS=1 */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
