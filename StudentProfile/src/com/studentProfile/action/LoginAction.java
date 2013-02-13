@@ -48,6 +48,7 @@ public class LoginAction extends ActionSupport {
 		AdminModel admin = adminDAO.login(userName, password);
 		if (admin != null) {
 			sessionMap.put("admin", admin);
+			sessionMap.put("role", "admin");
 			return "adminLoginSuccess";
 		} else {
 			StudentModel student = studentDAO.login(userName, password);
@@ -55,6 +56,7 @@ public class LoginAction extends ActionSupport {
 				return ERROR;
 			} else {
 				sessionMap.put("student", student);
+				sessionMap.put("role", "student");
 				return "studentLoginSuccess";
 			}
 		}
