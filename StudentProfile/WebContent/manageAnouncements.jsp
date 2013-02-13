@@ -47,17 +47,10 @@
 		element2.type = "text";
 		element2.name = "anouncements["+rowCount+"].anoName";
 		element2.size = 100;
-		element2.style.display = "block";
 		element2.id="anouncementin["+rowCount+"]";
 		
-		
-		var element3 = document.createElement("input");
-		element3.type = "label";
-		element3.name = "anouncements["+rowCount+"].anoName";
-		element3.style.display = "none";
-		element3.id="anouncementout["+rowCount+"]";
 		cell2.appendChild(element2);
-		cell2.appendChild(element3);
+		
 		
 		var cell3 = row.insertCell(2);
 		var element4 = document.createElement("input");
