@@ -7,9 +7,12 @@
 package com.studentProfile.action;
 
 import java.util.ArrayList;
+import java.util.Map;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.studentProfile.DAO.SubjectsDAO;
+import com.studentProfile.model.entity.StudentModel;
 import com.studentProfile.model.page.SubjectsModel;
 
 /**
@@ -124,21 +127,22 @@ public class SubjectsAction extends ActionSupport {
 		}
 		this.setActionName("showSubject");
 		int studentID;
-		// Map<String, Object> session;
+		Map<String, Object> session;
 
 		// get the user information from session object.
-		studentID = 1;
-
-		/*session = ActionContext.getContext().getSession();
-		UserModel user = (UserModel) session.get("user");
-		StudentModel student = (StudentModel) session.get("session");
-		if (user.getRole().equalsIgnoreCase("student")) {
+		//studentID = 1;
+		String roll="";
+		session = ActionContext.getContext().getSession();
+		roll = (String)session.get("role");
+		StudentModel student = (StudentModel) session.get("student");
+		if (roll.equalsIgnoreCase("student")) {
 			studentID = student.getStuID();
+			System.out.println("Roll is: "+ roll+" Student ID "+ studentID);
 		} else {
 			addActionMessage("There is no subject for Admin");
 			return "success";
 		}
-		*/
+		
 
 		this.setSubjectsInfo(SubjectsDAO.getSubjectInfo(this.getCourse(),
 				studentID));
