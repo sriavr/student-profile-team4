@@ -9,7 +9,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.studentProfile.model.StudentModel;
+import com.studentProfile.model.entity.StudentModel;
 import com.studentProfile.util.LogMessage;
 
 public class LeftPaneAction extends ActionSupport{
