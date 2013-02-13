@@ -37,9 +37,9 @@ public class ManageSubjectsDAO extends BaseDAO {
 	}
 
 	public int addSubject(SubjectModel subject) {
-		String query = "INSERT INTO subject(subCode,subName,subSyllabus,semID,facID) VALUES(";
-		query += subject.getSubCode() + "," + subject.getSubName() + ","
-				+ subject.getSubSyllabus() + "," + subject.getSemID() + ","
+		String query = "INSERT INTO subject(subCode,subName,subSyllabus,semID,facID) VALUES('";
+		query += subject.getSubCode() + "','" + subject.getSubName() + "','"
+				+ subject.getSubSyllabus() + "'," + subject.getSemID() + ","
 				+ subject.getFacID() + ")";
 		update(query);
 		return 0;
@@ -47,9 +47,9 @@ public class ManageSubjectsDAO extends BaseDAO {
 
 	public int updateSubject(SubjectModel subject) {
 		String query = "UPDATE subject SET ";
-		query += "subCode=" + subject.getSubCode() + ", ";
-		query += "subName=" + subject.getSubName() + ", ";
-		query += "subSyllabus=" + subject.getSubSyllabus() + ", ";
+		query += "subCode='" + subject.getSubCode() + "', ";
+		query += "subName='" + subject.getSubName() + "', ";
+		query += "subSyllabus='" + subject.getSubSyllabus() + "', ";
 		query += "semID=" + subject.getSemID() + ", ";
 		query += "facID=" + subject.getFacID() + " ";
 		query += "WHERE subID=" + subject.getSubID();
