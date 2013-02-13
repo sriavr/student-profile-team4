@@ -11,7 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.studentProfile.model.entity.SubjectModel;
 import com.studentProfile.model.page.SubjectsModel;
+import com.studentProfile.util.LogMessage;
 
 /**
  * @author Pratibind Kumar Jha
@@ -84,6 +86,34 @@ public class SubjectsDAO {
 			e.printStackTrace();
 		}
 		return subjectModel;
+	}// end of getSubjectObject().
+
+	/**
+	 * @author Sridhar Purpose of this method is to use the SubjectModel
+	 */
+
+	public static SubjectModel getSubjectDetails(int subID) {
+		SubjectModel subject = new SubjectModel();
+
+		String query = "SELECT distinct * FROM subject where subID = " + subID;
+		ResultSet rs = BaseDAO.readFromDB(query);
+		try {
+			while (rs.next()) {
+				subject.setSubID(rs.getInt("subID"));
+				subject.setFacID(rs.getInt("facID"));
+				subject.setSemID(rs.getInt("semID"));
+				subject.setSubCode(rs.getString("subCode"));
+				subject.setSubName(rs.getString("subName"));
+				subject.setSubSyllabus(rs.getString("subSyllabus"));
+			}
+		} catch (SQLException e) {
+			LogMessage.log("Exception caught in newsDAO.getNews");
+			e.printStackTrace();
+		} finally {
+			BaseDAO.close(rs);
+		}
+
+		return subject;
 	}// end of getSubjectObject().
 
 }// end of subjectDAO class.
