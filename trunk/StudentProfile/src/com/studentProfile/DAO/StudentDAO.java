@@ -1,6 +1,6 @@
 package com.studentProfile.DAO;
 
-import com.studentProfile.model.StudentModel;
+import com.studentProfile.model.entity.StudentModel;
 import com.studentProfile.util.DatabaseUtil;
 import com.studentProfile.util.LogMessage;
 
@@ -13,7 +13,7 @@ public class StudentDAO {
 		try {
 			DatabaseUtil.connect();
 			DatabaseUtil.ps = DatabaseUtil.con
-					.prepareStatement("select * from user u, student s where s.usrID = u.usrID and u.usrName = ? and u.password = ?");
+					.prepareStatement("select * from student s where stuName=? and stuPassword=?");
 			LogMessage
 					.log("Message From StudentDAO.login : Arguments ::username is--"
 							+ userName + " password is--" + password);
@@ -23,9 +23,11 @@ public class StudentDAO {
 			while (DatabaseUtil.rs.next()) {
 				student = new StudentModel();
 				student.setStuID(DatabaseUtil.rs.getInt("stuID"));
-				student.setStuDOB(DatabaseUtil.rs.getDate("stuDOB"));
-				student.setStuRollNo(DatabaseUtil.rs.getString("stuRollNo"));
 				student.setStuName(DatabaseUtil.rs.getString("stuName"));
+				student.setStuPassword(DatabaseUtil.rs.getString("stuPassword"));
+				student.setStuRollNo(DatabaseUtil.rs.getString("stuRollNo"));
+				student.setStuDOB(DatabaseUtil.rs.getDate("stuDOB"));
+
 				// student.setIntID(DatabaseUtil.rs.getInt("intID"));
 				// student.setStuPassword(DatabaseUtil.rs.getString("stuPassword"));
 				// ---------------- Yet to be
@@ -34,22 +36,13 @@ public class StudentDAO {
 				// student.setStuPhoto(DatabaseUtil.rs.getBlob("stuPhoto"));
 				// ----------------
 				// ----------------------------------------------------
-				student.getUser().setUsrName(
-						DatabaseUtil.rs.getString("usrName"));
-				student.getUser().setUsrID(DatabaseUtil.rs.getInt("s.usrID"));
-				student.getUser().setPassword(
-						DatabaseUtil.rs.getString("password"));
-				student.getUser().setRole(DatabaseUtil.rs.getString("role"));
-
 				flag = 1;// setting flag = 1 says that a student credentials are
 							// validated and there is an student with the given
 							// credentials
 				LogMessage
 						.log("Message From studentDAO.login : student Name is "
 								+ student.getStuName() + " RollNo:"
-								+ student.getStuRollNo() + " username:"
-								+ student.getUser().getUsrName() + " role:"
-								+ student.getUser().getRole());
+								+ student.getStuRollNo() + " username:");
 			}
 
 		} catch (Exception e) {

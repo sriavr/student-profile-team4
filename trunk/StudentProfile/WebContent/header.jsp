@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>	
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,7 +30,8 @@
 		<a href="subjectsAction">Subjects</a>&nbsp;&nbsp;
 		<a href="enrollCourseShowSemAction">Enroll</a>&nbsp;&nbsp;
 		<a href="myfriendAction">MyFriends</a>&nbsp;&nbsp;
-	
+		<s:submit action="logout.action" label="Logout">
+		</s:submit>
 	</div>
 	</s:if>
 	<s:else>

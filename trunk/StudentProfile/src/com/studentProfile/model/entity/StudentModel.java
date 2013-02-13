@@ -1,4 +1,4 @@
-package com.studentProfile.model;
+package com.studentProfile.model.entity;
 
 import java.io.File;
 import java.util.Date;
@@ -16,18 +16,17 @@ public class StudentModel {
 	private Integer stuID;
 	private String stuName;
 	private byte[] stuPhoto;
-	private Timer stuLoggedIn;
+	private String stuPassword;
+	private Date stuLoggedIn;
 	private String stuRollNo;
 	private Date stuDOB;
 
-	private UserModel user = new UserModel();
-
-	public UserModel getUser() {
-		return user;
+	public String getStuPassword() {
+		return stuPassword;
 	}
 
-	public void setUser(UserModel user) {
-		this.user = user;
+	public void setStuPassword(String stuPassword) {
+		this.stuPassword = stuPassword;
 	}
 
 	public Integer getStuID() {
@@ -46,17 +45,15 @@ public class StudentModel {
 		this.stuName = stuName;
 	}
 
-
-
 	public byte[] getStuPhoto() {
 		return stuPhoto;
 	}
 
-	public Timer getStuLoggedIn() {
+	public Date getStuLoggedIn() {
 		return stuLoggedIn;
 	}
 
-	public void setStuLoggedIn(Timer stuLoggedIn) {
+	public void setStuLoggedIn(Date stuLoggedIn) {
 		this.stuLoggedIn = stuLoggedIn;
 	}
 

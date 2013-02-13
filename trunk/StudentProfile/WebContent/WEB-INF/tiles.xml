@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
-       
+
 <tiles-definitions>
 
 	<definition name="baselayout" template="/baseLayout.jsp">
@@ -12,56 +12,67 @@
 		<put-attribute name="announcement" value="/announcements.jsp" />
 		<put-attribute name="news" value="/news.jsp" />
 	</definition>
-	
-	
+
+
 	<definition name="welcome.jsp" extends="baselayout">
-		<put-attribute name="body" value="/welcome.jsp"/>
+		<put-attribute name="body" value="/welcome.jsp" />
 	</definition>
 	<definition name="error.jsp" extends="baselayout">
-		<put-attribute name="body" value="/error.jsp"/>
+		<put-attribute name="body" value="/error.jsp" />
 	</definition>
 	<definition name="login.jsp" extends="baselayout">
-		<put-attribute name="body" value="/login.jsp"/>
-		<put-attribute name="header" value=""/>
-		<put-attribute name="left" value=""/>
-		<put-attribute name="news" value=""/>
-		<put-attribute name="announcement" value=""/>
+		<put-attribute name="body" value="/login.jsp" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="left" value="" />
+		<put-attribute name="news" value="" />
+		<put-attribute name="announcement" value="" />
 	</definition>
+
+	<!-- Added by Sridhar Jammalamadaka (MT2012138) enrollCourse-show-sem -->
+	<definition name="logout.jsp" extends="baselayout">
+		<put-attribute name="body" value="/logout.jsp" />
+	</definition>
+	
+	<definition name="assignFacultySubject.jsp" extends="baselayout">
+		<put-attribute name="body" value="/assignFacultySubject.jsp" />
+	</definition>
+	<!-- End Of addition -->
+
 	<definition name="administratorHome.jsp" extends="baselayout">
-		<put-attribute name="body" value="/administratorHome.jsp"/>
+		<put-attribute name="body" value="/administratorHome.jsp" />
 	</definition>
 	<definition name="studentHome.jsp" extends="baselayout">
-		<put-attribute name="body" value="/studentHome.jsp"/>
+		<put-attribute name="body" value="/studentHome.jsp" />
 	</definition>
-	
+
 	<definition name="myProfile.jsp" extends="baselayout">
-		<put-attribute name="body" value="/myProfile.jsp"/>
+		<put-attribute name="body" value="/myProfile.jsp" />
 	</definition>
-	
+
 	<definition name="studentHome.jsp" extends="baselayout">
-		<put-attribute name="body" value="/studentHome.jsp"/>
+		<put-attribute name="body" value="/studentHome.jsp" />
 	</definition>
-	
+
 	<!-- Added by Debargha Ganguly-Grades Page -->
 	<definition name="grades.jsp" extends="baselayout">
-		<put-attribute name="body" value="/grades.jsp"/>
+		<put-attribute name="body" value="/grades.jsp" />
 	</definition>
 
 	<definition name="manageAnouncements.jsp" extends="baselayout">
-		<put-attribute name="body" value="/manageAnouncements.jsp"/>
+		<put-attribute name="body" value="/manageAnouncements.jsp" />
 	</definition>
 	<definition name="manageNews.jsp" extends="baselayout">
-		<put-attribute name="body" value="/manageNews.jsp"/>
+		<put-attribute name="body" value="/manageNews.jsp" />
 	</definition>
-	
- <!-- End Of addition    -->
-	<!-- Added by Pratibind Jha(MT2012100) enrollCourse-show-sem  -->
+
+	<!-- End Of addition -->
+	<!-- Added by Pratibind Jha(MT2012100) enrollCourse-show-sem -->
 	<definition name="enrollcourseShowSem.jsp" extends="baselayout">
-		<put-attribute name="body" value="/enrollCourse.jsp"/>
+		<put-attribute name="body" value="/enrollCourse.jsp" />
 	</definition>
 	<definition name="subjects.jsp" extends="baselayout">
-		<put-attribute name="body" value="/subjects.jsp"/>
+		<put-attribute name="body" value="/subjects.jsp" />
 	</definition>
-	<!-- End of Definition -->		
+	<!-- End of Definition -->
 
 </tiles-definitions>
