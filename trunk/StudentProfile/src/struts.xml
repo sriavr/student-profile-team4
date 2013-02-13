@@ -28,12 +28,20 @@
 			</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
+<<<<<<< .mine
+		<action name="viewSyllabus" class="com.studentProfile.action.ViewSyllabusAction">
+			<result name="success" type="tiles">viewSyllabus.jsp</result>
+			<result name="failure" type="tiles">error.jsp</result>
+		</action>
+			<!-- Added by Sridhar Jammalamadaka (MT2012138) enrollCourse-show-sem -->
+=======
 		<action name="viewSyllabus" class="com.studentProfile.action.ViewSyllabusAction">
 			<result name="success" type="tiles">viewSyllabus.jsp</result>
 			<result name="failure" type="tiles">error.jsp</result>
 		</action>
 
 		<!-- Added by Sridhar Jammalamadaka (MT2012138) enrollCourse-show-sem -->
+>>>>>>> .r98
 
 		<action name="assignFacSub"
 			class="com.studentProfile.action.AssignFacultySubjectAction">
@@ -47,6 +55,7 @@
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
 		<!-- End of Definition -->
+		
 		<action name="studentHomeAction" class="com.studentProfile.action.ForwardAction"
 			method="studentHome">
 			<result name="success" type="tiles">studentHome.jsp</result>
@@ -72,10 +81,15 @@
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
 		<action name="manageSubjectsAction" class="com.studentProfile.action.ManageSubjectsAction">
-			<result name="success" type="tiles">manageSubjectsAction.jsp</result>
+			<result name="success" type="tiles">manageSubjects.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-		
+
+		<action name="manageSubjectsSaveAction"
+			class="com.studentProfile.action.ManageSubjectsSaveAction">
+			<result name="success" type="redirectAction">manageSubjectsAction</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
 		<!-- Added by Debargha Ganguly(MT2012039) conatains Grades Page -->
 		<action name="gradeAction" class="com.studentProfile.action.GradesAction">
 			<result name="success" type="tiles">grades.jsp</result>
@@ -125,7 +139,7 @@
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
 		<!-- end of Addition Pratibind Jha(MT2012100) -->
-		
+	
 		<!-- Added by Ranadheer(MT2012060) conatains manageUsers Page -->
 		
 		<action name="manageUsersAction" class ="com.studentProfile.action.ManageUsersAction" method="manageUsers">
@@ -145,7 +159,7 @@
 	
 		<!-- end of Addition Ranadheer(MT2012060) -->
 		
-		
+	
 	</package>
 
 </struts>
