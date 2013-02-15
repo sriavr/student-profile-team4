@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.mysql.jdbc.Blob;
 import com.studentProfile.model.entity.*;
 import com.studentProfile.util.DatabaseUtil;
 import com.studentProfile.util.LogMessage;
@@ -32,7 +33,9 @@ public class StudentDAO {
 				student.setStuPassword(DatabaseUtil.rs.getString("stuPassword"));
 				student.setStuRollNo(DatabaseUtil.rs.getString("stuRollNo"));
 				student.setStuDOB(DatabaseUtil.rs.getDate("stuDOB"));
-
+				Blob blob = (Blob) DatabaseUtil.rs.getBlob("stuPhoto");
+				if (blob != null)
+					student.setStuPhoto(blob.getBytes(1, (int) blob.length()));
 				// student.setIntID(DatabaseUtil.rs.getInt("intID"));
 				// student.setStuPassword(DatabaseUtil.rs.getString("stuPassword"));
 				// ---------------- Yet to be
@@ -62,8 +65,9 @@ public class StudentDAO {
 
 		return student;
 	}
-public ArrayList<StudentModel> allStudents(){
-		
+
+	public ArrayList<StudentModel> allStudents() {
+
 		ArrayList<StudentModel> Students = new ArrayList<StudentModel>();
 		StudentModel student;
 		ResultSet result;
@@ -73,27 +77,29 @@ public ArrayList<StudentModel> allStudents(){
 			result = BaseDAO.readFromDB(query);
 			LogMessage
 					.log("Message From StudentDAO.allStudents() : Arguments :: no");
-			while (result.next()){
+			while (result.next()) {
 				Integer stuID = result.getInt("stuID");
-				String stuName =result.getString("stuName");
+				String stuName = result.getString("stuName");
 				String stuPassword = result.getString("stuPassword");
-				//File stuPhoto = result.getBlob("stuPhoto");
+				// File stuPhoto = result.getBlob("stuPhoto");
 				byte stuPhoto[] = null;
-				//String stuLoggedIn = result.getTime("stuLoggedIn").toString();
+				// String stuLoggedIn =
+				// result.getTime("stuLoggedIn").toString();
 				Date stuLoggedIn = null;
 				String stuRollNo = result.getString("stuRollNo");
 				Date stuDOB = result.getDate("stuDOB");
-				student = new StudentModel(stuID,stuName,stuPhoto,stuPassword,stuLoggedIn,stuRollNo,stuDOB);
+				student = new StudentModel(stuID, stuName, stuPhoto,
+						stuPassword, stuLoggedIn, stuRollNo, stuDOB);
 				Students.add(student);
 			}
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			LogMessage.log("Exception Caught in studentDAO.allStudents()");
 			e.printStackTrace();
 		}
 		return Students;
 	}
-	public int getMaxStudentId(){
+
+	public int getMaxStudentId() {
 		int maxId = 0;
 		String query;
 		ResultSet result;
@@ -102,75 +108,87 @@ public ArrayList<StudentModel> allStudents(){
 			result = BaseDAO.readFromDB(query);
 			LogMessage
 					.log("Message From StudentDAO.getMaxStudentId() : Arguments :: no");
-			while (result.next()){
+			while (result.next()) {
 				maxId = result.getInt("maxId");
 			}
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			LogMessage.log("Exception Caught in studentDAO.getMaxStudentId()");
 			e.printStackTrace();
 		}
 		return maxId;
 	}
-	public boolean  updateStudentDetails(int stuID,String stuName, String stuPassword){
+
+	public boolean updateStudentDetails(int stuID, String stuName,
+			String stuPassword) {
 		String query;
 		boolean result = false;
 		try {
-			query = "update student set stuName = '"+stuName+"',stuPassword = '" +
-					stuPassword+"' where stuID="+stuID;
+			query = "update student set stuName = '" + stuName
+					+ "',stuPassword = '" + stuPassword + "' where stuID="
+					+ stuID;
 			BaseDAO.update(query);
 			LogMessage
-					.log("Message From StudentDAO.updateStudentDetails() Arguments :: stuID : "+ stuID+" stuName : "+stuName + " stuPassword : "+stuPassword);
+					.log("Message From StudentDAO.updateStudentDetails() Arguments :: stuID : "
+							+ stuID
+							+ " stuName : "
+							+ stuName
+							+ " stuPassword : " + stuPassword);
 			result = true;
 			return result;
-		}	
-		catch(Exception e){
-			LogMessage.log("Exception Caught in studentDAO.updateStudentDetails()");
+		} catch (Exception e) {
+			LogMessage
+					.log("Exception Caught in studentDAO.updateStudentDetails()");
 			e.printStackTrace();
 			result = false;
 		}
-		return result; 
+		return result;
 	}
-	public boolean  insertNewStudent(int stuID,String stuName, String stuPassword,String StuRollNo){
+
+	public boolean insertNewStudent(int stuID, String stuName,
+			String stuPassword, String StuRollNo) {
 		String query;
 		boolean result = false;
 		try {
 
-			query = "insert into student(stuID,stuName,stuPassword,stuRollNo)" +
-					"values("+stuID+",'"+stuName+"','"+stuPassword+"','"+StuRollNo+"')";
+			query = "insert into student(stuID,stuName,stuPassword,stuRollNo)"
+					+ "values(" + stuID + ",'" + stuName + "','" + stuPassword
+					+ "','" + StuRollNo + "')";
 
 			BaseDAO.update(query);
 			LogMessage
-					.log("Message From StudentDAO.insertNewStudent() Arguments :: stuID : "+ stuID+" stuName : "+stuName + " stuPassword : "+stuPassword);
+					.log("Message From StudentDAO.insertNewStudent() Arguments :: stuID : "
+							+ stuID
+							+ " stuName : "
+							+ stuName
+							+ " stuPassword : " + stuPassword);
 			result = true;
 			return result;
-			
-		}	
-		catch(Exception e){
+
+		} catch (Exception e) {
 			LogMessage.log("Exception Caught in studentDAO.insertNewStudent()");
 			e.printStackTrace();
 			result = false;
 		}
-		return result; 
+		return result;
 	}
-	
-	public boolean  removeStudent(int stuID){
+
+	public boolean removeStudent(int stuID) {
 		String query;
 		boolean result = false;
 		try {
-			query = "delete from student where stuID="+stuID;
+			query = "delete from student where stuID=" + stuID;
 			BaseDAO.update(query);
 			LogMessage
-					.log("Message From StudentDAO.removeStudent() Arguments :: stuID : "+ stuID);
+					.log("Message From StudentDAO.removeStudent() Arguments :: stuID : "
+							+ stuID);
 			result = true;
 			return result;
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			LogMessage.log("Exception Caught in studentDAO.removeStudent()");
 			e.printStackTrace();
 			result = false;
 		}
-		return result; 
-	}		
+		return result;
+	}
 
 }

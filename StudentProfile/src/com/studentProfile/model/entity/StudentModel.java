@@ -15,7 +15,7 @@ import org.apache.catalina.User;
 public class StudentModel {
 	private Integer stuID;
 	private String stuName;
-	private byte[] stuPhoto;
+	private byte[] stuPhoto = null;
 	private String stuPassword;
 	private Date stuLoggedIn;
 	private String stuRollNo;
