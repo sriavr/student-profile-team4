@@ -12,27 +12,27 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.studentProfile.model.entity.StudentModel;
 import com.studentProfile.util.LogMessage;
 
-public class LeftPaneAction extends ActionSupport{
+public class LeftPaneAction extends ActionSupport {
 
-	public String execute(){
+	public String execute() {
 		return Action.SUCCESS;
 	}
-	public String profilePic(){
+
+	public String profilePic() {
 		HttpServletResponse response = ServletActionContext.getResponse();
-		StudentModel student = (StudentModel)ActionContext.getContext().getSession().get("user");
+		StudentModel student = (StudentModel) ActionContext.getContext()
+				.getSession().get("student");
 		response.setContentType("image/jpeg");
-		try{
+		try {
 			OutputStream out = response.getOutputStream();
-			out.write(student.getStuPhoto());
-	        out.close();
-			}
-			catch(Exception e){
-				LogMessage.log("Exception Caught in LeftPaneAction.profilePic");
-				e.printStackTrace();
-			}
-			
-			
-		
+			if (student.getStuPhoto() != null)
+				out.write(student.getStuPhoto());
+			out.close();
+		} catch (Exception e) {
+			LogMessage.log("Exception Caught in LeftPaneAction.profilePic");
+			e.printStackTrace();
+		}
+
 		return null;
 	}
 }
