@@ -15,16 +15,18 @@ import org.apache.catalina.User;
 public class StudentModel {
 	private Integer stuID;
 	private String stuName;
-	private byte[] stuPhoto = null;
+	private byte[] stuPhoto = new byte[0];
 	private String stuPassword;
 	private Date stuLoggedIn;
 	private String stuRollNo;
 	private Date stuDOB;
-	
-	public StudentModel(){
-		
+
+	public StudentModel() {
+
 	}
-	public StudentModel(Integer stuID, String stuName,byte[] stuPhoto,String stuPassword,Date stuLoggedIn,String stuRollNo,Date stuDOB){
+
+	public StudentModel(Integer stuID, String stuName, byte[] stuPhoto,
+			String stuPassword, Date stuLoggedIn, String stuRollNo, Date stuDOB) {
 		this.stuID = stuID;
 		this.stuName = stuName;
 		this.stuPassword = stuPassword;

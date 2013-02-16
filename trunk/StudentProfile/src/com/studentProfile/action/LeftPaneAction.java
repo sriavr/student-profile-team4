@@ -25,8 +25,12 @@ public class LeftPaneAction extends ActionSupport {
 		response.setContentType("image/jpeg");
 		try {
 			OutputStream out = response.getOutputStream();
-			if (student.getStuPhoto() != null)
+			if (student.getStuPhoto().length != 0) {
+				//hard coded picture of blank image;
+				//student.setStuPhoto(new byte[0]);
+			} else {
 				out.write(student.getStuPhoto());
+			}
 			out.close();
 		} catch (Exception e) {
 			LogMessage.log("Exception Caught in LeftPaneAction.profilePic");
