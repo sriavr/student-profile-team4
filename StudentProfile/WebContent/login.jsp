@@ -8,6 +8,7 @@
 <title>Login</title>
 </head>
 <body>
+	<s:actionerror />
 	<div align="center" style="border: thick;">
 		<s:form action="loginAction">
 			<s:textfield name="userName" label="User Name"></s:textfield>
