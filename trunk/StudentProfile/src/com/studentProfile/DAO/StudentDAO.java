@@ -19,7 +19,7 @@ public class StudentDAO {
 		try {
 			DatabaseUtil.connect();
 			DatabaseUtil.ps = DatabaseUtil.con
-					.prepareStatement("select * from student s where stuName=? and stuPassword=?");
+					.prepareStatement("select * from student where stuName=? and stuPassword=?");
 			LogMessage
 					.log("Message From StudentDAO.login : Arguments ::username is--"
 							+ userName + " password is--" + password);
@@ -50,7 +50,7 @@ public class StudentDAO {
 				LogMessage
 						.log("Message From studentDAO.login : student Name is "
 								+ student.getStuName() + " RollNo:"
-								+ student.getStuRollNo() + " username:");
+								+ student.getStuRollNo());
 			}
 
 		} catch (Exception e) {
@@ -65,7 +65,8 @@ public class StudentDAO {
 
 		return student;
 	}
-	//Added by Pavan
+
+	// Added by Pavan
 	public StudentModel getStudent(int stu_ID) {
 		StudentModel student = null;
 		int flag = -1;
@@ -75,10 +76,10 @@ public class StudentDAO {
 					.prepareStatement("select * from student s where stuID=?");
 			LogMessage
 					.log("Message From StudentDAO.login : Arguments ::stu id is--"
-							+ stu_ID );// " password is--" + password);
+							+ stu_ID);// " password is--" + password);
 			DatabaseUtil.ps.setInt(1, stu_ID);
-			//DatabaseUtil.ps.setString(2, password);
-			//DatabaseUtil.rs = DatabaseUtil.ps.executeQuery();
+			// DatabaseUtil.ps.setString(2, password);
+			// DatabaseUtil.rs = DatabaseUtil.ps.executeQuery();
 			while (DatabaseUtil.rs.next()) {
 				student = new StudentModel();
 				student.setStuID(DatabaseUtil.rs.getInt("stuID"));

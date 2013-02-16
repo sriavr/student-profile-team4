@@ -11,9 +11,6 @@ import com.studentProfile.model.entity.StudentModel;
 
 public class LoginAction extends ActionSupport {
 
-	/**
-	 * 
-	 */
 	private String userName;
 	private String password;
 
