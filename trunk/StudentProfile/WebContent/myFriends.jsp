@@ -21,14 +21,29 @@
 <body>
 	
 	
-	<table align="center" id="myId">
+	<table id="myId">
 	   
 	   
-		<tr ><th><strong>Friends</strong></th></tr>
+		<tr ><th width="170">
+		
+		<strong>Student Picture</strong></th>
+		
+			   
+		<th width="170">
+		
+		<strong>Student Roll no</strong></th>
+		
+		<th>Student Name</th>
+		</tr>
 		<s:iterator value="friendsList">
 			<tr align="center"> 
 				<td align="center">
 					<s:property value="stuID"/>
+			    </td>
+			    <td> 
+			    	<img src="retpicture?user_id=<s:property value="stu_ID"/>" height="50" width="50" />
+			    </td>
+			    <td>		
 					<s:property value="stuName"/>
 						<!--<s:property value="title"/>-->
 					
@@ -37,7 +52,7 @@
 		</s:iterator>
 	</table>
 	
-	<div id="pageNavPosition"></div>
+	<div id="pageNavPosition" ></div>
 	 <script type="text/javascript"><!--
         var pager = new Pager('myId', 1); 
         pager.init(); 
