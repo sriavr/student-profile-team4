@@ -53,7 +53,8 @@ public class LoginAction extends ActionSupport {
 		} else {
 			StudentModel student = studentDAO.login(userName, password);
 			if (student == null) {
-				return ERROR;
+				addActionError("Wrong username/password combination");
+				return "login";
 			} else {
 				sessionMap.put("student", student);
 				sessionMap.put("role", "student");
