@@ -65,6 +65,59 @@ public class StudentDAO {
 
 		return student;
 	}
+	//Added by Pavan
+	public StudentModel getStudent(int stu_ID) {
+		StudentModel student = null;
+		int flag = -1;
+		try {
+			DatabaseUtil.connect();
+			DatabaseUtil.ps = DatabaseUtil.con
+					.prepareStatement("select * from student s where stuID=?");
+			LogMessage
+					.log("Message From StudentDAO.login : Arguments ::stu id is--"
+							+ stu_ID );// " password is--" + password);
+			DatabaseUtil.ps.setInt(1, stu_ID);
+			//DatabaseUtil.ps.setString(2, password);
+			//DatabaseUtil.rs = DatabaseUtil.ps.executeQuery();
+			while (DatabaseUtil.rs.next()) {
+				student = new StudentModel();
+				student.setStuID(DatabaseUtil.rs.getInt("stuID"));
+				student.setStuName(DatabaseUtil.rs.getString("stuName"));
+				student.setStuPassword(DatabaseUtil.rs.getString("stuPassword"));
+				student.setStuRollNo(DatabaseUtil.rs.getString("stuRollNo"));
+				student.setStuDOB(DatabaseUtil.rs.getDate("stuDOB"));
+				Blob blob = (Blob) DatabaseUtil.rs.getBlob("stuPhoto");
+				if (blob != null)
+					student.setStuPhoto(blob.getBytes(1, (int) blob.length()));
+				// student.setIntID(DatabaseUtil.rs.getInt("intID"));
+				// student.setStuPassword(DatabaseUtil.rs.getString("stuPassword"));
+				// ---------------- Yet to be
+				// implemented-------------------------------
+				// student.setStuLoggedIn(DatabaseUtil.rs.getTime("stuLoggedIn"));
+				// student.setStuPhoto(DatabaseUtil.rs.getBlob("stuPhoto"));
+				// ----------------
+				// ----------------------------------------------------
+				flag = 1;// setting flag = 1 says that a student credentials are
+							// validated and there is an student with the given
+							// credentials
+				LogMessage
+						.log("Message From studentDAO.login : student Name is "
+								+ student.getStuName() + " RollNo:"
+								+ student.getStuRollNo() + " username:");
+			}
+
+		} catch (Exception e) {
+			LogMessage.log("Exception Caught in studentDAO.getStudent");
+			e.printStackTrace();
+			student = null;
+		} finally {
+			if (flag != 1)
+				student = null;
+			DatabaseUtil.connectionClose();
+		}
+
+		return student;
+	}
 
 	public ArrayList<StudentModel> allStudents() {
 
