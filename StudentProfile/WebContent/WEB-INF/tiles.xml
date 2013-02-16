@@ -29,6 +29,9 @@
 	</definition>
 
 	<!-- Added by Sridhar Jammalamadaka (MT2012138) enrollCourse-show-sem -->
+	<definition name="addFaculty.jsp" extends="baselayout">
+		<put-attribute name="body" value="/addFaculty.jsp" />
+	</definition>
 
 	<definition name="viewFacultyForSubject.jsp" extends="baselayout">
 		<put-attribute name="body" value="/viewFacultyForSubject.jsp" />
@@ -61,7 +64,7 @@
 		<put-attribute name="body" value="/viewSyllabus.jsp" />
 	</definition>
 	<definition name="manageSubjects.jsp" extends="baselayout">
-		<put-attribute name="body" value="/manageSubjects.jsp"/>
+		<put-attribute name="body" value="/manageSubjects.jsp" />
 	</definition>
 	<definition name="viewSyllabus.jsp" extends="baselayout">
 		<put-attribute name="body" value="/viewSyllabus.jsp" />
@@ -88,9 +91,9 @@
 		<put-attribute name="body" value="/subjects.jsp" />
 	</definition>
 	<!-- End of Definition -->
-<!-- Added by ranadheer (MT2012060) manageUsers page -->
+	<!-- Added by ranadheer (MT2012060) manageUsers page -->
 	<definition name="manageUsers.jsp" extends="baselayout">
-		<put-attribute name="body" value="/manageUsers.jsp"/>
+		<put-attribute name="body" value="/manageUsers.jsp" />
 	</definition>
 	<!-- End of addition -->
 	<!-- Added by ranadheer (MT2012060) manageUsers page -->

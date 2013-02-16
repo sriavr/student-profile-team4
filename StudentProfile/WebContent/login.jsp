@@ -10,9 +10,16 @@
 <body>
 	<div align="center" style="border: thick;">
 		<s:form action="loginAction">
-			<input type="text" placeholder="User Name" name="userName"/><br>
-			<input type="password" placeholder="Password" name="password"/><br>
-			<input type="submit" value="Submit"/><input type="button" value="Forgot Password"/>
+			<s:textfield name="userName" label="User Name"></s:textfield>
+			<s:password name="password" label="Password"></s:password>
+			<!-- 			<input type="text" placeholder="User Name" name="userName"/><br> -->
+			<!-- 			<input type="password" placeholder="Password" name="password"/><br> -->
+			<!-- 				<input type="submit" value="Submit" /><input type="button" -->
+			<!-- 					value="Forgot Password" /> -->
+
+			<s:submit value="Login">
+			</s:submit>
+
 		</s:form>
 	</div>
 </body>
