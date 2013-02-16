@@ -7,6 +7,6 @@
 <title>Admin Home</title>
 </head>
 <body>
-	<h1>Administratr Home </h1>
+	<h1>Administrator Home </h1>
 </body>
 </html>
