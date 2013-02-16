@@ -1,6 +1,8 @@
 package com.studentProfile.DAO;
 import java.util.ArrayList;
-
+import java.io.File;
+import java.io.FileInputStream;
+import java.sql.Blob;
 import com.studentProfile.model.entity.StudentModel;
 import com.studentProfile.util.DatabaseUtil;
 import com.studentProfile.util.LogMessage;
@@ -11,18 +13,19 @@ public class MyFriendsDAO {
 	ArrayList<StudentModel> friendsList = new ArrayList<StudentModel>();
 	public ArrayList<StudentModel> getFriends(String stuRollNo ) {
 		StudentModel student = null;
+		Blob image = null;
 		int flag = -1;
 		try {
 			DatabaseUtil.connect();
 		//	LogMessage.log("Message From MyFriendsDAO.MyFriendDAO : username is "
 			//		+ student.getStuName());
 			DatabaseUtil.ps = DatabaseUtil.con
-					.prepareStatement("(select distinct stuID,stuName  from friend,student where stuID1 = 1 and stuID2=stuID) UNION (select distinct stuID,stuName  from friend,student  where stuID2 = 1 and stuID=stuID1)");
+					.prepareStatement("(select distinct stuID,stuName,stuPhoto  from friend,student where stuID1 = ? and stuID2=stuID) UNION (select distinct stuID,stuName,stuPhoto from friend,student  where stuID2 = ? and stuID=stuID1)");
 			LogMessage
 					.log("Message From StudentDAO.login : Arguments ::username is--"
 							+ stuRollNo + " password is--");// + password);
-			//DatabaseUtil.ps.setString(1, stuRollNo);
-			//DatabaseUtil.ps.setString(2, password);
+			DatabaseUtil.ps.setString(1, stuRollNo);
+			DatabaseUtil.ps.setString(2, stuRollNo);
 			DatabaseUtil.rs = DatabaseUtil.ps.executeQuery();
 			while (DatabaseUtil.rs.next()) {
 				student = new StudentModel();
@@ -31,6 +34,9 @@ public class MyFriendsDAO {
 				System.out.println("stuID");
 				student.setStuName(DatabaseUtil.rs.getString("stuName"));
 				System.out.println("Stuname");
+				//to convert picture from blob byte streams
+				image = DatabaseUtil.rs.getBlob("stuPhoto");
+                student.setStuPhoto(image.getBytes(1,(int)image.length()));
 				//student.setStuPassword(DatabaseUtil.rs.getString("stuPassword"));
 				//student.setStuDOB(DatabaseUtil.rs.getDate("stuDOB"));
 				// ---------------- Yet to be
