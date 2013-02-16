@@ -8,9 +8,11 @@
 <title>Logged out</title>
 </head>
 <body>
-	<h1>Successfully logged out of Student Profile Website</h1>
-
-	<s:submit action="login.action" label="Login"></s:submit>
-
+	<s:form action="login">
+		<h2>Successfully logged out of Student Profile Website</h2>
+		<div style="clear: both;">
+			<s:submit action="login" value="Login"></s:submit>
+		</div>
+	</s:form>
 </body>
 </html>

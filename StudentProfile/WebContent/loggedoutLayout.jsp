@@ -51,18 +51,8 @@
 	<div id="header">
 		<tiles:insertAttribute name="header" />
 	</div>
-	<div id="left">
-		<tiles:insertAttribute name="left" />
-	</div>
 	<div id="body">
 		<tiles:insertAttribute name="body" />
-	</div>
-	<div id="announcement">
-		<tiles:insertAttribute name="announcement" />
-	</div>
-	<br>
-	<div id="news">
-		<tiles:insertAttribute name="news" />
 	</div>
 	<div id="footer">
 		<tiles:insertAttribute name="footer" />

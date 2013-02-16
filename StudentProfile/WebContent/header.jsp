@@ -17,6 +17,7 @@
 <link rel="stylesheet" type="text/css" href="/css/header.css" />
 </head>
 <body>
+<h1>Student Profile Information System</h1>
 	<div id="topnav" style="display:block; width:100%;">
 	<div style="float:left">
 		<input type="text" id="friend_id" onblur="editSearchLink()" placeholder="Search Friends"/> <a
