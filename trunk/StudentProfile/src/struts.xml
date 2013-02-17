@@ -35,8 +35,7 @@
 		</action>
 
 		<!-- Added by Sridhar Jammalamadaka (MT2012138) enrollCourse-show-sem -->
-		<action name="viewFacSub"
-			class="com.studentProfile.action.ViewFacultyForSubjectAction">
+		<action name="viewFacSub" class="com.studentProfile.action.ViewFacultyForSubjectAction">
 			<result name="success" type="tiles">viewFacultyForSubject.jsp
 			</result>
 			<result name="error" type="tiles">error.jsp</result>
@@ -51,7 +50,7 @@
 			<result name="success" type="tiles">addFaculty.jsp
 			</result>
 			<result name="error" type="tiles">error.jsp</result>
-		</action>
+		</action>		
 		<action name="logoutAction" class="com.studentProfile.action.LogoutAction">
 			<result name="success" type="tiles">logout.jsp
 			</result>
@@ -70,7 +69,7 @@
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
 
-		<action name="profilePicAction" class="com.studentProfile.action.LeftPaneAction"
+		<action name="getProfilePicAction" class="com.studentProfile.action.LeftPaneAction"
 			method="profilePic">
 			<result name="success" type="tiles">myProfile.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
@@ -96,7 +95,6 @@
 		<!-- Added by Debargha Ganguly(MT2012039) conatains Grades Page -->
 		<action name="gradeAction" class="com.studentProfile.action.GradesAction">
 			<result name="success" type="tiles">grades.jsp</result>
-			<result name="login" type="tiles">login.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
 		<action name="manageAnouncementsAction"
@@ -143,30 +141,43 @@
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
 		<!-- end of Addition Pratibind Jha(MT2012100) -->
-
+	
 		<!-- Added by Ranadheer(MT2012060) conatains manageUsers Page -->
-
-		<action name="manageUsersAction" class="com.studentProfile.action.ManageUsersAction"
-			method="manageUsers">
+		
+		<action name="manageUsersAction" class ="com.studentProfile.action.ManageUsersAction" method="manageUsers">
 			<result name="success" type="tiles">manageUsers.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-
-		<action name="manageUsersUpdationAction" class="com.studentProfile.action.ManageUsersAction"
-			method="manageUsersUpdation">
+		
+		<action name="manageUsersUpdationAction" class ="com.studentProfile.action.ManageUsersAction" method="manageUsersUpdation">
 			<result name="success" type="tiles">manageUsers.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-
-		<action name="manageUsersRemoveAction" class="com.studentProfile.action.ManageUsersAction"
-			method="manageUsersRemove">
+		
+		<action name="manageUsersRemoveAction" class ="com.studentProfile.action.ManageUsersAction" method="manageUsersRemove">
 			<result name="success" type="tiles">manageUsers.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-
+		
+		
+		<action name="profilePicAction" class ="com.studentProfile.action.ProfilePicAction" method="profilePic">
+			<result name="success" type="tiles">profilePic.jsp</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+		
+		<action name="myProfileAction" class ="com.studentProfile.action.MyProfileAction" method="myProfile">
+			<result name="success" type="tiles">myProfile.jsp</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+		
+		<action name="editMyProfileAction" class ="com.studentProfile.action.EditMyProfileAction" method="editProfile">
+			<result name="success" type="tiles">editProfile.jsp</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+		
 		<!-- end of Addition Ranadheer(MT2012060) -->
-
-
+		
+	
 	</package>
 
 </struts>

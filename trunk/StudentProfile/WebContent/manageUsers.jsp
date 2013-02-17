@@ -75,7 +75,7 @@
         var element0= document.createElement("input");
         element0.type = "checkbox";
         element0.name="chk_group";
-        element0.id="MT2012_"+nextStudentId;  
+        element0.id="STU_"+nextStudentId;  
         element0.checked = true;
         cell0.appendChild(element0);
 
@@ -83,20 +83,20 @@
         var cell1 = newRow.insertCell(1);
         var element1 = document.createElement("input");
         element1.type = "text";
-        element1.value="MT2012_"+ nextStudentId;
+        element1.value="STU_"+ nextStudentId;
         element1.disabled=true;
         cell1.appendChild(element1);
 
         var cell2 = newRow.insertCell(2);
         var element2 = document.createElement("input");
         element2.type = "text";
-        element2.id="MT2012_"+nextStudentId+":name"; 
+        element2.id="STU_"+nextStudentId+":name"; 
         cell2.appendChild(element2);
 
         var cell3 = newRow.insertCell(3);
         var element3 = document.createElement("input");
         element3.type = "text";
-        element3.id="MT2012_"+nextStudentId+":pass"; 
+        element3.id="STU_"+nextStudentId+":pass"; 
         cell3.appendChild(element3);
 	
 	}
