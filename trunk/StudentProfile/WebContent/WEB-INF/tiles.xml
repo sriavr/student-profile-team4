@@ -112,4 +112,44 @@
 		<put-attribute name="body" value="/manageUsers.jsp" />
 	</definition>
 	<!-- End of addition -->
+	
+	
+	
+	<!-- Added by Surya Pratap Desai (MT2012038) update grades and search friend pages -->
+	
+	
+	<definition name="updateGrade" extends="baselayout">
+		<put-attribute name="body" value="/updateGrades.jsp"/>
+	</definition>
+	
+	<definition name="friendProfil" extends="baselayout">
+		<put-attribute name="body" value="/friendProfile.jsp"/>
+	</definition>
+	
+	
+	<definition name="AddFriend" extends="baselayout">
+		<put-attribute name="body" value="/addFriendSuccess.jsp"/>
+	</definition>
+	
+	<definition name="RemoveFriend" extends="baselayout">
+		<put-attribute name="body" value="/removeFriendSuccess.jsp"/>
+	</definition>
+	
+	<definition name="updateGrades" extends="baselayout">
+		<put-attribute name="body" value="/updateGradesSuccess.jsp"/>
+	</definition>
+	
+	<definition name="updateGradesFailed.jsp" extends="baselayout">
+		<put-attribute name="body" value="/updateGradesFailed.jsp"/>
+	</definition>
+	
+	<definition name="addFriendError.jsp" extends="baselayout">
+		<put-attribute name="body" value="/addFriendError.jsp"/>
+	</definition>
+	
+	<definition name="removeFriendError.jsp" extends="baselayout">
+		<put-attribute name="body" value="/removeFriendError.jsp"/>
+	</definition>
+
+	<!-- End of addition -->
 </tiles-definitions>
