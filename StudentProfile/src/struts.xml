@@ -9,6 +9,7 @@
 		<result-types>
 			<result-type name="tiles"
 				class="org.apache.struts2.views.tiles.TilesResult" />
+			<result-type name="myBytesResult" class="com.studentProfile.action.ImageBytesResult" />	
 		</result-types>
 
 		<action name="indexForwardAction" class="com.studentProfile.action.ForwardAction"
@@ -126,6 +127,23 @@
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
 		
+   
+    
+    <action name="getImage" class="com.studentProfile.action.MyFriendsGetPicAction">
+        <result name="myImageResult" type="myBytesResult">
+            <param name="contentType">${contentType}</param>
+            <param name="contentDisposition">${contentDisposition}</param>
+            <param name="contentLength">${contentLength}</param>
+             <param name="imageInBytes">${imageInBytes}</param>
+          
+        </result>
+    </action>
+		
+		<action name="myFriendsAction" class="com.studentProfile.action.MyFriendsAction">
+			<result name="success" type="tiles">myFriends.jsp</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+		
 		<!-- Added by Pratibind Jha(MT2012100) show semester list in enrollCourse.jsp -->
 		<action name="enrollCourseShowSemAction" class="com.studentProfile.action.EnrollCourseAction"
 			method="showSemester">
@@ -177,10 +195,7 @@
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
 		
-	    <action name="retpicture" class ="com.studentProfile.action.MyFriendsAction" method="retPicture">
-			<result name="success">myFriends.jsp</result>
-			<result name="failure">error.jsp</result>
-			</action>
+	    
 		<!-- end of Addition Ranadheer(MT2012060) -->
 		
 		
