@@ -25,14 +25,16 @@ public class LoginFilter implements Filter {
 		String queryString = request.getQueryString();
 		String excludePagesParam = request.getParameter("excludePages");
 		LogMessage.log("Init param for excludePages:" + excludePagesParam);
-		String[] excludePages = excludePagesParam.split(",");
-		checkPage(url, excludePages);
+		if (excludePagesParam != null) {
+			String[] excludePages = excludePagesParam.split(",");
+			checkPage(url, excludePages);
+		}
 		LogMessage.log("In LoginFilter " + req.getServerName()
 				+ " page being accessed:" + url + "querystring:" + queryString);
 
 		if ((session.getAttribute("student") == null)
 				&& (session.getAttribute("admin") == null)) {
-			// response.sendRedirect("login.jsp");
+			response.sendRedirect("login.jsp");
 		} else {
 
 			chain.doFilter(req, resp);
