@@ -120,10 +120,12 @@
 		</action>
 
 		<!-- end of addition Debargha Ganguly(MT2012039) -->
-
-
-
-
+		<!-- added by Pavan -->
+		<action name="myFriendsAction" class="com.studentProfile.action.MyFriendsAction">
+			<result name="success" type="tiles">myFriends.jsp</result>
+			<result name="error" type="tiles">error.jsp</result>
+		</action>
+		
 		<!-- Added by Pratibind Jha(MT2012100) show semester list in enrollCourse.jsp -->
 		<action name="enrollCourseShowSemAction" class="com.studentProfile.action.EnrollCourseAction"
 			method="showSemester">
@@ -175,6 +177,10 @@
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
 		
+	    <action name="retpicture" class ="com.studentProfile.action.MyFriendsAction" method="retPicture">
+			<result name="success">myFriends.jsp</result>
+			<result name="failure">error.jsp</result>
+			</action>
 		<!-- end of Addition Ranadheer(MT2012060) -->
 		
 		
