@@ -16,7 +16,7 @@
 		<filter-class>com.studentProfile.util.LoginFilter</filter-class>
 		<init-param>
 			<param-name>excludePages</param-name>
-			<param-value>login.jsp,logout.jsp</param-value>
+			<param-value>login.jsp,logout.jsp,loginAction.action</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>

@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 
 public class LoginFilter implements Filter {
 
+	FilterConfig filterConfig = null;
+
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp,
 			FilterChain chain) throws IOException, ServletException {
@@ -23,22 +25,30 @@ public class LoginFilter implements Filter {
 
 		String url = request.getRequestURL().toString();
 		String queryString = request.getQueryString();
-		String excludePagesParam = request.getParameter("excludePages");
+		String excludePagesParam = filterConfig
+				.getInitParameter("excludePages");
+
 		LogMessage.log("Init param for excludePages:" + excludePagesParam);
 		if (excludePagesParam != null) {
 			String[] excludePages = excludePagesParam.split(",");
-			checkPage(url, excludePages);
+			if (checkPage(url, excludePages)) {
+				LogMessage.log("All well.. continuing..");
+				chain.doFilter(req, resp);
+			} else {
+				if ((session.getAttribute("student") == null)
+						&& (session.getAttribute("admin") == null)) {
+					LogMessage.log("Redirecting to login page...");
+					response.sendRedirect("login.jsp");
+				} else {
+					LogMessage.log("All well.. continuing..");
+					chain.doFilter(req, resp);
+				}
+			}
 		}
+
 		LogMessage.log("In LoginFilter " + req.getServerName()
-				+ " page being accessed:" + url + "querystring:" + queryString);
-
-		if ((session.getAttribute("student") == null)
-				&& (session.getAttribute("admin") == null)) {
-			response.sendRedirect("login.jsp");
-		} else {
-
-			chain.doFilter(req, resp);
-		}
+				+ " page being accessed:" + url + "querystring:" + queryString
+				+ " serverName:" + req.getServerName());
 
 	}
 
@@ -47,7 +57,7 @@ public class LoginFilter implements Filter {
 		LogMessage.log("pageURL is:" + pageURL);
 		for (int i = 0; i < pages.length; i++) {
 			LogMessage.log("page is: " + pages[i]);
-			if (pages[i].equals(pageURL))
+			if (pageURL.endsWith(pages[i]))
 				found = true;
 		}
 		return found;
@@ -61,8 +71,7 @@ public class LoginFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
-
+		this.filterConfig = arg0;
 	}
 
 }
