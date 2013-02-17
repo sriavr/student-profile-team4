@@ -81,6 +81,7 @@ public class StudentDAO {
 					.log("Message From StudentDAO.login : Arguments ::stu id is--"
 							+ stu_ID);// " password is--" + password);
 			DatabaseUtil.ps.setInt(1, stu_ID);
+			DatabaseUtil.rs = DatabaseUtil.ps.executeQuery();
 			// DatabaseUtil.ps.setString(2, password);
 			// DatabaseUtil.rs = DatabaseUtil.ps.executeQuery();
 			while (DatabaseUtil.rs.next()) {
@@ -91,6 +92,7 @@ public class StudentDAO {
 				student.setStuRollNo(DatabaseUtil.rs.getString("stuRollNo"));
 				student.setStuDOB(DatabaseUtil.rs.getDate("stuDOB"));
 				Blob blob = (Blob) DatabaseUtil.rs.getBlob("stuPhoto");
+				System.out.println("pic length:"+blob.length());
 				if (blob != null)
 					student.setStuPhoto(blob.getBytes(1, (int) blob.length()));
 				// student.setIntID(DatabaseUtil.rs.getInt("intID"));
@@ -247,7 +249,7 @@ public class StudentDAO {
 		}
 		return result;
 	}
-
+	
 	public StudentModel getStudentDetails(int stuID) {
 
 		String query;
@@ -305,5 +307,5 @@ public class StudentDAO {
 		}
 		return result;
 	}
-
+	
 }
