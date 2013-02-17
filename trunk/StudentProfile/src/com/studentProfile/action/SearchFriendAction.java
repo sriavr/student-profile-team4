@@ -1,4 +1,5 @@
 package com.studentProfile.action;
+
 import com.studentProfile.model.entity.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -45,9 +46,10 @@ public class SearchFriendAction extends ActionSupport {
 
 	public String studentname;
 	public String studentdob;
-	public String studentinterest="";
+	public String studentinterest = "";
 	public int interestid;
-    public static String uname;
+	public static String uname;
+
 	public String getStudentname() {
 		return studentname;
 	}
@@ -95,63 +97,71 @@ public class SearchFriendAction extends ActionSupport {
 		Statement statement;
 		Connection con = null;
 
-
 		SearchFriendDAO searchFriendDAO = new SearchFriendDAO();
 		try {
-
 
 			query1 = " select * from student where stuRollNo='" + studentNumber
 					+ "'";
 			// DatabaseUtil.connect();
 			result1 = searchFriendDAO.getStudentDetails(query1);
-//			result1 = statement.executeQuery(query1);
+			// result1 = statement.executeQuery(query1);
 			if (result1.next()) {
 				studentid = result1.getInt(1);
 				studentname = result1.getString(2);
 				studentdob = result1.getString(7);
 				System.out.println("student name  " + studentname);
 			}
-			
-			uname=studentname;
-			
-			// ///////////////////////////////////////////////////////////////////
-			
-			query = "SELECT intName from mapStudentInterests,interests WHERE mapStudentInterests.stuID="+studentid+" AND mapStudentInterests.intID=interests.intID";
-			
-//			query = "select intID from mapStudentInterests where stuID="
-//					+ studentid;
-			
-			result = searchFriendDAO.getStudentInterests(query);
 
+			uname = studentname;
+
+			// ///////////////////////////////////////////////////////////////////
+
+			query = "SELECT intName from mapStudentInterests,interests WHERE mapStudentInterests.stuID="
+					+ studentid
+					+ " AND mapStudentInterests.intID=interests.intID";
+
+			// query = "select intID from mapStudentInterests where stuID="
+			// + studentid;
+
+			result = searchFriendDAO.getStudentInterests(query);
 
 			// //////////////////////////////////////////////////////////////////////
 
-
 			ArrayList<String> studentinterestList = new ArrayList<String>();
 			while (result.next()) {
-				
+
 				String interest = result.getString(1);
-				System.out.println("Interest = "+interest);
+				System.out.println("Interest = " + interest);
 				studentinterestList.add(interest);
 			}
 			for (String string : studentinterestList) {
-				if(string.equals(null))
+				if (string.equals(null))
 					continue;
-				studentinterest +=string+",";
+				studentinterest += string + ",";
 			}
-			studentinterest = studentinterest.substring(0, studentinterest.length()-1);
+			LogMessage.log("in SearchFriendAction: studentinterest-"
+					+ studentinterest);
+			if (studentinterest.length() > 0)
+				studentinterest = studentinterest.substring(0,
+						studentinterest.length() - 1);
 			System.out.println("I am here");
 			// ////////////////////////////////////////////////////////////////////
 
-			Map<String,Object> sessionMap = ActionContext.getContext().getSession();
-			
-			int loggedInStudentID = ((StudentModel)sessionMap.get("student")).getStuID();
-			query3 = "(select distinct stuID from friend,student where stuID1 = "+loggedInStudentID+" and stuID2=stuID) UNION (select distinct stuID from friend,student where stuID2 = "+loggedInStudentID+" and stuID=stuID1)";
-			//query3 = "(select distinct stuID from friend,student where stuID1 = 1 and stuID2=stuID) UNION (select distinct stuID from friend,student where stuID2 = 1 and stuID=stuID1)";
-			
-			//result3 = statement.executeQuery(query3);
+			Map<String, Object> sessionMap = ActionContext.getContext()
+					.getSession();
+
+			int loggedInStudentID = ((StudentModel) sessionMap.get("student"))
+					.getStuID();
+			query3 = "(select distinct stuID from friend,student where stuID1 = "
+					+ loggedInStudentID
+					+ " and stuID2=stuID) UNION (select distinct stuID from friend,student where stuID2 = "
+					+ loggedInStudentID + " and stuID=stuID1)";
+			// query3 =
+			// "(select distinct stuID from friend,student where stuID1 = 1 and stuID2=stuID) UNION (select distinct stuID from friend,student where stuID2 = 1 and stuID=stuID1)";
+
+			// result3 = statement.executeQuery(query3);
 			System.out.println("Just executed");
-			result=searchFriendDAO.verifyFriend(query3);
+			result = searchFriendDAO.verifyFriend(query3);
 			while (result.next()) {
 				int id = result.getInt("stuID");
 				if (studentid == id) {
@@ -179,35 +189,36 @@ public class SearchFriendAction extends ActionSupport {
 		Connection con = null;
 		SearchFriendDAO searchFriendDAO = new SearchFriendDAO();
 
-
 		try {
-			
+
 			System.out.println("testing the program");
 
 			// ////////////////////////////////////////////////////////////////////////////
 
 			if (uname != null) {
-				query = " select stuID from student where stuName='"
-						+ uname + "'";
+				query = " select stuID from student where stuName='" + uname
+						+ "'";
 				LogMessage.log("Query for selecting student: " + query);
 				// DatabaseUtil.connect();
-				//result = statement.executeQuery(query);
-				result=searchFriendDAO.getStudentID(query);
+				// result = statement.executeQuery(query);
+				result = searchFriendDAO.getStudentID(query);
 				if (result.next()) {
 					studentid = result.getInt(1);
 				}
-				Map<String,Object> sessionMap = ActionContext.getContext().getSession();
-				
-				int loggedInStudentID = ((StudentModel)sessionMap.get("student")).getStuID();
+				Map<String, Object> sessionMap = ActionContext.getContext()
+						.getSession();
+
+				int loggedInStudentID = ((StudentModel) sessionMap
+						.get("student")).getStuID();
 				// //////////////////////////////////////////////////////////////////////////////
 				if (studentid != 0) {
-					query1 = " insert into friend(stuID2,stuID1) values("+loggedInStudentID+","
-							+ studentid + ")";
+					query1 = " insert into friend(stuID2,stuID1) values("
+							+ loggedInStudentID + "," + studentid + ")";
 					LogMessage.log("Executing query:" + query1);
 					// DatabaseUtil.connect();
-					
+
 					searchFriendDAO.updateFriend(query1);
-					//statement.executeUpdate(query1);
+					// statement.executeUpdate(query1);
 				}
 			}
 			return "success";
@@ -226,30 +237,31 @@ public class SearchFriendAction extends ActionSupport {
 		SearchFriendDAO searchFriendDAO = new SearchFriendDAO();
 		try {
 
-
 			System.out.println("testing the program");
 
 			// /////////////////////////////////////////////////////////////////
 
-			query = " select stuID from student where stuName='"
-					+ uname + "'";
+			query = " select stuID from student where stuName='" + uname + "'";
 			LogMessage.log(query);
 			// DatabaseUtil.connect();
-			//result = statement.executeQuery(query1);
-			result=searchFriendDAO.getStudentID(query);
+			// result = statement.executeQuery(query1);
+			result = searchFriendDAO.getStudentID(query);
 			if (result.next()) {
 				studentid = result.getInt(1);
 			}
 
 			// ////////////////////////////////////////////////////////////////////
 
-			Map<String,Object> sessionMap = ActionContext.getContext().getSession();
-			
-			int loggedInStudentID = ((StudentModel)sessionMap.get("student")).getStuID();
-			
-			query1 = " delete from friend where stuID2="+loggedInStudentID+" and stuID1="
-					+ studentid;
-			query1 += "  or (stuID1="+loggedInStudentID+" and stuID2=" + studentid + ")";
+			Map<String, Object> sessionMap = ActionContext.getContext()
+					.getSession();
+
+			int loggedInStudentID = ((StudentModel) sessionMap.get("student"))
+					.getStuID();
+
+			query1 = " delete from friend where stuID2=" + loggedInStudentID
+					+ " and stuID1=" + studentid;
+			query1 += "  or (stuID1=" + loggedInStudentID + " and stuID2="
+					+ studentid + ")";
 			// DatabaseUtil.connect();
 
 			searchFriendDAO.updateDelete(query1);
