@@ -177,7 +177,36 @@
 		
 		<!-- end of Addition Ranadheer(MT2012060) -->
 		
-	
+		
+		
+		
+		<!-- Added by Surya Pratap Desai(MT2012038) conatains UpdateGrades Page and Search Friend -->
+		
+		<action name="updateGradesAction" class ="com.studentProfile.action.ForwardAction" method="index">
+			<result name="success" type="tiles">updateGrade</result>
+			<result name="failure" type="tiles">error.jsp</result>
+		</action>
+		
+		<action name="upGrade" class ="com.studentProfile.action.UpdateGradeAction" method="execute">
+			<result name="success" type="tiles">updateGrades</result>
+			<result name="failure" type="tiles">updateGradesFailed.jsp</result>
+		</action>
+		
+		<action name="friendAction" class ="com.studentProfile.action.SearchFriendAction">
+			<result name="success" type="tiles">friendProfil</result>
+			<result name="failure" type="tiles">error.jsp</result>
+		</action>
+		
+		<action name="AddFriendAction" class ="com.studentProfile.action.SearchFriendAction" method="addFriend">
+			<result name="success" type="tiles">AddFriend</result>
+			<result name="failure" type="tiles">addFriendError.jsp</result>
+		</action>
+		
+		<action name="RemoveFriendAction" class ="com.studentProfile.action.SearchFriendAction" method="removeFriend">
+			<result name="success" type="tiles">RemoveFriend</result>
+			<result name="failure" type="tiles">removeFriendError.jsp</result>
+		</action>
+		<!-- end of Addition by Surya Pratp Desai(MT2012038) -->
 	</package>
 
 </struts>
