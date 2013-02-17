@@ -36,7 +36,7 @@
 			<tr align="center">
 				<td align="center"><s:property value="stuID" /></td>
 				<td><a href="personalprofile"> <img
-						src="retpicture?stu_ID=<s:property value="stuID"/>" height="50"
+						src="getImage?stuID=<s:property value="stuID"/>" height="50"
 						width="50" /></a></td>
 				<td><s:url var="link" action="myProfileAction">
 						<s:param name="stuID">${stuID}</s:param>
