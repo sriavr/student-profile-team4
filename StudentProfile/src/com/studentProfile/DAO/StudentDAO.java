@@ -1,6 +1,9 @@
 package com.studentProfile.DAO;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
@@ -239,6 +242,64 @@ public class StudentDAO {
 			return result;
 		} catch (Exception e) {
 			LogMessage.log("Exception Caught in studentDAO.removeStudent()");
+			e.printStackTrace();
+			result = false;
+		}
+		return result;
+	}
+
+	public StudentModel getStudentDetails(int stuID) {
+
+		String query;
+		ResultSet result;
+		StudentModel student = null;
+		try {
+			System.out.println("stuid : " + stuID);
+			query = "select * from student where stuID=" + stuID;
+			result = BaseDAO.readFromDB(query);
+			LogMessage
+					.log("Message From StudentDAO.getStudentDetails() : Arguments :: stuID : "
+							+ stuID);
+			while (result.next()) {
+				Integer stuid = result.getInt("stuID");
+				String stuName = result.getString("stuName");
+				String stuPassword = result.getString("stuPassword");
+				// File stuPhoto = result.getBlob("stuPhoto");
+				byte stuPhoto[] = null;
+				// String stuLoggedIn =
+				// result.getTime("stuLoggedIn").toString();
+				Date stuLoggedIn = null;
+				String stuRollNo = result.getString("stuRollNo");
+				Date stuDOB = result.getDate("stuDOB");
+				student = new StudentModel(stuid, stuName, stuPhoto,
+						stuPassword, stuLoggedIn, stuRollNo, stuDOB);
+			}
+		} catch (Exception e) {
+			LogMessage
+					.log("Exception Caught in studentDAO.getStudentDetails()");
+			e.printStackTrace();
+		}
+		return student;
+	}
+
+	public boolean updateProfile(StudentModel studDetails) {
+		boolean result = false;
+		try {
+			System.out.println("stuName:" + studDetails.getStuName());
+			// System.out.println("stuPhoto: " +
+			// studDetails.getStuPhoto().toString());
+			PreparedStatement pst = BaseDAO.getConnection().prepareStatement(
+					"update  student set stuPhoto=? WHERE stuID="
+							+ studDetails.getStuID());
+			pst.setBytes(1, studDetails.getStuPhoto());
+			pst.executeUpdate();
+			// BaseDAO.update(query);
+			LogMessage
+					.log("Message From StudentDAO.updateProfile() Arguments :: studDetails Object");
+			result = true;
+			return result;
+		} catch (Exception e) {
+			LogMessage.log("Exception Caught in studentDAO.updateProfile()");
 			e.printStackTrace();
 			result = false;
 		}

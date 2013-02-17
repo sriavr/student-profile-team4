@@ -98,9 +98,18 @@
 	</definition>
 	<!-- End of addition -->
 	<!-- Added by ranadheer (MT2012060) manageUsers page -->
+	<definition name="profilePic.jsp" extends="baselayout">
+		<put-attribute name="body" value="/viewProfile.jsp" />
+	</definition>
+	<definition name="myProfile.jsp" extends="baselayout">
+		<put-attribute name="body" value="/editMyProfile.jsp" />
+	</definition>
+	<definition name="editProfile.jsp" extends="baselayout">
+		<put-attribute name="body" value="/success.jsp" />
+	</definition>
+	<!-- End of addition -->
 	<definition name="manageUsers.jsp" extends="baselayout">
 		<put-attribute name="body" value="/manageUsers.jsp" />
 	</definition>
 	<!-- End of addition -->
-
 </tiles-definitions>

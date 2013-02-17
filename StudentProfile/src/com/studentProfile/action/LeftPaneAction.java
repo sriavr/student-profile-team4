@@ -19,6 +19,7 @@ public class LeftPaneAction extends ActionSupport {
 	}
 
 	public String profilePic() {
+		System.out.println("I am here");
 		HttpServletResponse response = ServletActionContext.getResponse();
 		StudentModel student = (StudentModel) ActionContext.getContext()
 				.getSession().get("student");
