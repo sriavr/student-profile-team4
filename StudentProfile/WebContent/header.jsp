@@ -52,11 +52,10 @@
 					href="manageSubjectsAction">Manage Subjects</a>&nbsp;&nbsp; <a
 					href="assignFacSub">Assign Faculty Per Subject</a>&nbsp;&nbsp; <a
 					href="manageNewsAction">Manage News</a>&nbsp;&nbsp; <a
-					href="manageAnnouncementsAction">Manage Announcements</a>&nbsp;&nbsp;
+					href="manageAnouncementsAction">Manage Announcements</a>&nbsp;&nbsp;
 				<a href="logoutAction">Logout</a>
 			</div>
 		</s:else>
 	</div>
 </body>
 </html>
-</html>	
