@@ -95,10 +95,12 @@ public class GradesDAO extends BaseDAO {
 			 gradesModel.setSubject(rs.getString(1));
 			 gradesModel.setSubject_code(rs.getString(2));
 			 gradesModel.setGrade(rs.getString(3));
-			 if(!gradesModel.getGrade().contains("F"))
-				 gradesModel.setResult("PASS");
-			 else
+			 if(gradesModel.getGrade().contains("F"))
 				 gradesModel.setResult("FAIL");
+			 else if(gradesModel.getGrade().contains("NA"))
+				 gradesModel.setResult("");
+			 else
+				 gradesModel.setResult("PASS");
 			 grades.add(gradesModel);
 		 }
 		 }
