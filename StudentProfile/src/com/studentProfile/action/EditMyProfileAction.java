@@ -50,14 +50,16 @@ public class EditMyProfileAction extends ActionSupport {
 		try {
 			LogMessage.log("selectedInterests:" + selectedInterests + " stuID:"
 					+ stuID + " studentID:" + studentID);
-			String[] strInterests = selectedInterests.split(",");
-			int[] interests = new int[strInterests.length];
-			for (int i = 0; i < strInterests.length; i++) {
-				strInterests[i].trim();
-				interests[i] = Integer.parseInt(strInterests[i]);
-				intDAO.mapStudentInterest(stuID, interests[i]);
-			}
 
+			if (!selectedInterests.isEmpty()) {
+				String[] strInterests = selectedInterests.split(",");
+				int[] interests = new int[strInterests.length];
+				for (int i = 0; i < strInterests.length; i++) {
+					strInterests[i].trim();
+					interests[i] = Integer.parseInt(strInterests[i]);
+					intDAO.mapStudentInterest(stuID, interests[i]);
+				}
+			}
 			studDetails.setStuID(getStudentID());
 			studDetails.setStuName(getStudentName());
 			studDetails.setStuDOB(getStudentDOB());
