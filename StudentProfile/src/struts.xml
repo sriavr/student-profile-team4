@@ -64,12 +64,12 @@
 			<result name="success" type="tiles">studentHome.jsp</result>
 			<result name="failure" type="tiles">error.jsp</result>
 		</action>
-
+<!-- 
 		<action name="myProfileAction" class="com.studentProfile.action.LeftPaneAction">
 			<result name="success" type="tiles">myProfile.jsp</result>
 			<result name="error" type="tiles">error.jsp</result>
 		</action>
-
+ -->
 		<action name="getProfilePicAction" class="com.studentProfile.action.LeftPaneAction"
 			method="profilePic">
 			<result name="success" type="tiles">myProfile.jsp</result>
@@ -162,7 +162,7 @@
 		</action>
 		<!-- end of Addition Pratibind Jha(MT2012100) -->
 	
-		<!-- Added by Ranadheer(MT2012060) conatains manageUsers Page -->
+		<!-- Added by Ranadheer(MT2012060) conatains manageUsers  & View and Edit Profile Pages -->
 		
 		<action name="manageUsersAction" class ="com.studentProfile.action.ManageUsersAction" method="manageUsers">
 			<result name="success" type="tiles">manageUsers.jsp</result>
