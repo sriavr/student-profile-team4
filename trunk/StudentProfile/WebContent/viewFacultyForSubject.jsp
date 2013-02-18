@@ -12,6 +12,7 @@
 		Displaying faculty for subject:
 		<s:text name="subject.subName"></s:text>
 	</h2>
+	<s:actionerror/>
 
 	<table>
 		<tr>

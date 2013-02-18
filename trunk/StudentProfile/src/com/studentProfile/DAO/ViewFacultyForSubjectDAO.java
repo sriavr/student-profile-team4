@@ -14,6 +14,8 @@ public class ViewFacultyForSubjectDAO {
 		ArrayList<FacultyModel> facultyList = new ArrayList<FacultyModel>();
 		String query = "select f.facID, f.facName, m.subID from faculty f, mapSubjectFaculty m where m.facID = f.facID and m.subID ="
 				+ subID;
+		
+		LogMessage.log(query);
 		ResultSet rs = BaseDAO.readFromDB(query);
 		try {
 			while (rs.next()) {

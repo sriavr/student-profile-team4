@@ -1,4 +1,5 @@
 package com.studentProfile.DAO;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -6,59 +7,56 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
 import com.studentProfile.util.ConstantValues;
 
-
-public class BaseDAO
-{
+public class BaseDAO {
 	static Connection con;
+
 	public static Connection getConnection() {
-		
+
 		try {
-               if(con!=null)
-            	   return con;
-			
-				try {
-					Class.forName("com.mysql.jdbc.Driver");
-					
-				} catch (ClassNotFoundException ex) {
-					ex.printStackTrace();
-					
-				}
-			
+			if (con != null)
+				return con;
+
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+
+			} catch (ClassNotFoundException ex) {
+				ex.printStackTrace();
+
+			}
+
 			String connectionUrl = ConstantValues.connectionString;
 			con = DriverManager.getConnection(connectionUrl,
-					ConstantValues.databaseUser, ConstantValues.databasePassword);
+					ConstantValues.databaseUser,
+					ConstantValues.databasePassword);
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			
+
 		}
-		
+
 		return con;
 	}
-	
+
 	public static ResultSet readFromDB(String query) {
 		ResultSet result = null;
 		Statement stmt = null;
 		try {
 			Connection connection = getConnection();
-			
-			
+
 			stmt = connection.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
-			
+
 			result = stmt.executeQuery(query);
-		
+
 		} catch (SQLException se) {
 			se.printStackTrace();
 		}
-		
+
 		return result;
-	} 
-	
-	
+	}
+
 	public static int update(String sql) {
 		Statement statement = null;
 		int rows = 0;
@@ -66,13 +64,13 @@ public class BaseDAO
 			Connection connection = getConnection();
 			statement = connection.createStatement();
 			rows = statement.executeUpdate(sql);
-			
+
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-		} 
+		}
 		return rows;
-	} 
-	
+	}
+
 	public static void close(Statement statement) {
 		if (statement != null) {
 			try {
@@ -105,6 +103,6 @@ public class BaseDAO
 				ex.printStackTrace();
 			}
 		}
-	}	
+	}
 
 }

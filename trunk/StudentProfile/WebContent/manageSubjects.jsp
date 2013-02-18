@@ -151,9 +151,9 @@
 								name="subjectList[%{#stat.index}].subName"
 								value="%{subName}" cssClass="label" theme="simple" style="display:none" size="100" />
 								
-			 <s:label id="nameout[%{#stat.index}]"
+			<a href="viewFacSub?subID=<s:property value="subID"/>"> <s:label id="nameout[%{#stat.index}]"
 								name="subjectList[%{#stat.index}].subName"
-								value="%{subName}" cssClass="label" theme="simple" style="display:block" />
+								value="%{subName}" cssClass="label" theme="simple" style="display:block" /></a>
 								
 								
 		   </td>

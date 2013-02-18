@@ -25,6 +25,7 @@ public class SearchFriendAction extends ActionSupport {
 	String studentNumber;
 	public String enableFlag = "";
 	public boolean agreed = false;
+	
 
 	public String getEnableFlag() {
 		return enableFlag;
@@ -47,6 +48,15 @@ public class SearchFriendAction extends ActionSupport {
 	public String studentname;
 	public String studentdob;
 	public String studentinterest = "";
+	private String stuID;
+	public String getStuID() {
+		return stuID;
+	}
+
+	public void setStuID(String stuID) {
+		this.stuID = stuID;
+	}
+
 	public int interestid;
 	public static String uname;
 
@@ -107,6 +117,7 @@ public class SearchFriendAction extends ActionSupport {
 			// result1 = statement.executeQuery(query1);
 			if (result1.next()) {
 				studentid = result1.getInt(1);
+				stuID = studentid+"";
 				studentname = result1.getString(2);
 				studentdob = result1.getString(7);
 				System.out.println("student name  " + studentname);

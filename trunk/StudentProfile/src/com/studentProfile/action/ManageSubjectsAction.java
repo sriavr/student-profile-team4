@@ -53,10 +53,7 @@ public class ManageSubjectsAction extends ActionSupport{
  		setSubjectList(manageSubjectsDAO.getSubjectsList());
         setSemesterLst(manageSubjectsDAO.getSemesterList());
         setFacultylist(manageSubjectsDAO.getFacultyList());
-     		
-		
-		
-		 
+     	
 		return Action.SUCCESS;
 	}
 }

@@ -35,11 +35,15 @@ function addFriend(){
 <body>
 
 <s:form name="agreement_form" method="post">
-	<s:textfield name="studentname"  disabled="1" value="%{studentname}"  theme="simple"/>
+	Name <s:textfield name="studentname"  disabled="1" value="%{studentname}"  theme="simple"/>
 	<br><br>
-    <s:textfield name="studentdob"  disabled="1" value="%{studentdob}" theme="simple"/>
+	Photo <a href="profilePicAction?stuID=<s:property value="stuID"/>"> <img
+						src="getImage?stuID=<s:property value="stuID"/>" height="50"
+						width="50" /></a>
 	<br><br>
-	<s:textfield name="studentinterest"  disabled="1" value="%{studentinterest}" theme="simple"/>
+     Date Of Birth <s:textfield name="studentdob"  disabled="1" value="%{studentdob}" theme="simple"/>
+	<br><br>
+	Interests <s:textfield name="studentinterest"  disabled="1" value="%{studentinterest}" theme="simple"/>
 	<br><br>
 	<s:if test="%{enableFlag=='disabled'}" >
 	<s:checkbox name="agreed"  label="Friends"  disabled="disabled"/>

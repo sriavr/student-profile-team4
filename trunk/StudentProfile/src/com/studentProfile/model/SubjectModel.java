@@ -11,6 +11,7 @@ package com.studentProfile.model;
  */
 public class SubjectModel {
 
+	
 	private int subID;
 	private String subCode;
 	private String subName;
