@@ -19,17 +19,20 @@ public class LeftPaneAction extends ActionSupport {
 	}
 
 	public String profilePic() {
-		System.out.println("I am here");
+		LogMessage
+		.log("Message From LeftPaneAction.profilePic : Arguments :: no");
 		HttpServletResponse response = ServletActionContext.getResponse();
 		StudentModel student = (StudentModel) ActionContext.getContext()
 				.getSession().get("student");
 		response.setContentType("image/jpeg");
 		try {
 			OutputStream out = response.getOutputStream();
-			if (student.getStuPhoto().length != 0) {
+			if (student.getStuPhoto().length == 0) {
 				//hard coded picture of blank image;
 				//student.setStuPhoto(new byte[0]);
-			} else {
+			} 
+			else {
+				//System.out.println(student.getStuPhoto()==null?"yes":"no");
 				out.write(student.getStuPhoto());
 			}
 			out.close();
