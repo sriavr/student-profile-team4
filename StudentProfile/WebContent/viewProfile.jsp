@@ -14,17 +14,17 @@
 
 			<tr>
 				<td>Roll No</td>
-				<td><s:property value="%{#session.student.stuID}" /></td>
+				<td><s:property value="student.stuRollNo" /></td>
 			</tr>
 
 			<tr>
 				<td>Name</td>
-				<td><s:property value="%{#session.student.stuName}" /></td>
+				<td><s:property value="student.stuName" /></td>
 			</tr>
 
 			<tr>
 				<td>Date Of Birth</td>
-				<td><s:property value="%{#session.student.stuDOB}" /></td>
+				<td><s:property value="student.stuDOB" /></td>
 			</tr>
 
 			<tr>
@@ -42,7 +42,7 @@
 
 			<tr>
 				<td><s:submit name="editProfileButton" id="mysubmit"
-						value="Edit Profile" /></td>
+						value="Edit Profile" disabled="%{disabled}" /></td>
 			</tr>
 
 		</table>

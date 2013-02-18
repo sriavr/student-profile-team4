@@ -8,6 +8,7 @@ import com.studentProfile.util.LogMessage;
 
  
 
+
 public class AnnouncementsDAO extends BaseDAO{
 	public ArrayList<String> getAnnouncements(){
 		String query="SELECT * FROM anouncements";

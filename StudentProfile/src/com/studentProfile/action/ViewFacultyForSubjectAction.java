@@ -50,7 +50,7 @@ public class ViewFacultyForSubjectAction extends ActionSupport {
 			subject = SubjectsDAO.getSubjectDetails(Integer.parseInt(subID));
 		} else {
 			LogMessage.log("Error occurred");
-			return ERROR;
+			addActionError("No Faculty assigned");
 		}
 		return SUCCESS;
 	}

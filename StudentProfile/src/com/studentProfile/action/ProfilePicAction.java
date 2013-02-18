@@ -9,13 +9,21 @@ import com.studentProfile.util.LogMessage;
 import com.studentProfile.DAO.InterestDAO;
 import com.studentProfile.DAO.StudentDAO;
 import com.studentProfile.model.entity.*;
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+
 
 public class ProfilePicAction extends ActionSupport {
 
 	public StudentModel student = new StudentModel();
-	public Integer stuID;
+	public String stuID="";
 	private ArrayList<InterestModel> interests = new ArrayList<InterestModel>();
+    private boolean disabled;
+	public boolean isDisabled() {
+		return disabled;
+	}
+
+	public void setDisabled(boolean disabled) {
+		this.disabled = disabled;
+	}
 
 	public ArrayList<InterestModel> getInterests() {
 		return interests;
@@ -26,14 +34,28 @@ public class ProfilePicAction extends ActionSupport {
 	}
 
 	public String profilePic() {
-		StudentModel student = (StudentModel) ActionContext.getContext()
+		student = (StudentModel) ActionContext.getContext()
 				.getSession().get("student");
-		setStuID(student.getStuID());
+		
+		System.out.println("Student ID"+stuID);
+		if(stuID.equals(""))
+		{	
+			setStuID(student.getStuID()+"");
+			disabled = false;
+		}
+		else
+		{
+			disabled = true;
+		}
 		LogMessage
 				.log("Message From ProfilePicAction.profilePic : Arguments :: stuID:"
 						+ getStuID());
+		
+		StudentDAO studentDAO = new StudentDAO();
+		student=studentDAO.getStudent(Integer.parseInt(stuID));
+		System.out.println(student.getStuRollNo());
 		InterestDAO interestDAO = new InterestDAO();
-		ArrayList<InterestModel> ints = interestDAO.getInterests(stuID);
+		ArrayList<InterestModel> ints = interestDAO.getInterests(Integer.parseInt(stuID));
 		if (ints != null) {
 			setInterests(ints);
 			LogMessage.log("size of interests list:" + interests.size());
@@ -43,11 +65,11 @@ public class ProfilePicAction extends ActionSupport {
 		return Action.SUCCESS;
 	}
 
-	public Integer getStuID() {
+	public String getStuID() {
 		return stuID;
 	}
 
-	public void setStuID(Integer stuID) {
+	public void setStuID(String stuID) {
 		this.stuID = stuID;
 	}
 

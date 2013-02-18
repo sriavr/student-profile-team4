@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="css/table_new.css">
 <title>Insert title here</title>
 <script type="text/javascript" language="javascript">
 	function editUser() {
@@ -152,12 +153,12 @@
 </script>
 </head>
 <body>
-	<table border=3 id="user_details">
+	<table border=3 id="user_details" class="imagetable" align="center">
 		<tr>
 			<th></th>
-			<th>User Id</th>
-			<th>User Name</th>
-			<th>Password</th>
+			<th width="170">User Id</th>
+			<th width="170">User Name</th>
+			<th width="170">Password</th>
 		</tr>
 
 		<s:iterator value="students" var="item">
@@ -183,9 +184,13 @@
 			</tr>
 		</s:iterator>
 	</table>
-	<input type="button" value="Edit" id="editButton" onclick="javascript:editUser();" />
-	<input type="button" value="Add" id="addButton" onclick="addUser('<s:property value="maxStudentId" />')" />
-	<input type="button" value="Remove" id="removeButton" onclick="removeUser()"/><br>
-	<input type="button" value="Submit" id="submitButton" onclick="submit()"/>
+	<table align="center">
+	<tr>
+	<td><input type="button" value="Edit" id="editButton" onclick="javascript:editUser();" /></td>
+	<td><input type="button" value="Add" id="addButton" onclick="addUser('<s:property value="maxStudentId" />')" /></td>
+	<td><input type="button" value="Remove" id="removeButton" onclick="removeUser()"/><br></td>
+	<td><input type="button" value="Submit" id="submitButton" onclick="submit()"/></td>
+	</tr>
+	</table>
 </body>
 </html>

@@ -40,7 +40,7 @@
 				<a href="studentHomeAction">Home</a>&nbsp;&nbsp; <a
 					href="gradeAction">Grades</a>&nbsp;&nbsp; <a href="subjectsAction">Subjects</a>&nbsp;&nbsp;
 				<a href="enrollCourseShowSemAction">Enroll</a>&nbsp;&nbsp; <a
-					href="myfriendAction">MyFriends</a>&nbsp;&nbsp; <a
+					href="myFriendsAction">MyFriends</a>&nbsp;&nbsp; <a
 					href="logoutAction">Logout</a>
 			</div>
 		</s:if>
@@ -53,6 +53,7 @@
 					href="assignFacSub">Assign Faculty Per Subject</a>&nbsp;&nbsp; <a
 					href="manageNewsAction">Manage News</a>&nbsp;&nbsp; <a
 					href="manageAnouncementsAction">Manage Announcements</a>&nbsp;&nbsp;
+					<a href="addFaculty">Add Faculty</a>
 				<a href="logoutAction">Logout</a>
 			</div>
 		</s:else>

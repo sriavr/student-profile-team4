@@ -35,10 +35,10 @@
 		<s:iterator value="friendsList">
 			<tr align="center">
 				<td align="center"><s:property value="stuID" /></td>
-				<td><a href="personalprofile"> <img
+				<td><a href="profilePicAction?stuID=<s:property value="stuID"/>"> <img
 						src="getImage?stuID=<s:property value="stuID"/>" height="50"
 						width="50" /></a></td>
-				<td><s:url var="link" action="myProfileAction">
+				<td><s:url var="link" action="profilePicAction">
 						<s:param name="stuID">${stuID}</s:param>
 					</s:url> <a href="${link}"><s:property value="stuName" /></a> <!--<s:property value="title"/>-->
 
