@@ -53,11 +53,11 @@
 	<definition name="studentHome.jsp" extends="baselayout">
 		<put-attribute name="body" value="/studentHome.jsp" />
 	</definition>
-
+<!-- 
 	<definition name="myProfile.jsp" extends="baselayout">
 		<put-attribute name="body" value="/myProfile.jsp" />
 	</definition>
-
+ -->
 	<definition name="studentHome.jsp" extends="baselayout">
 		<put-attribute name="body" value="/studentHome.jsp" />
 	</definition>
@@ -101,7 +101,8 @@
 		<put-attribute name="body" value="/manageUsers.jsp" />
 	</definition>
 	<!-- End of addition -->
-	<!-- Added by ranadheer (MT2012060) manageUsers page -->
+	
+	<!-- Added by ranadheer (MT2012060) view and Edit profile pages -->
 	<definition name="profilePic.jsp" extends="baselayout">
 		<put-attribute name="body" value="/viewProfile.jsp" />
 	</definition>
@@ -111,10 +112,7 @@
 	<definition name="editProfile.jsp" extends="baselayout">
 		<put-attribute name="body" value="/success.jsp" />
 	</definition>
-	<!-- End of addition -->
-	<definition name="manageUsers.jsp" extends="baselayout">
-		<put-attribute name="body" value="/manageUsers.jsp" />
-	</definition>
+	
 	<!-- End of addition -->
 	
 	
