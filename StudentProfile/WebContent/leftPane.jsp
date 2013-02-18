@@ -6,15 +6,23 @@
 <body>
 	<div style="margin-left: 30px; border-left: 30px">
 		<s:if test="%{#session.role.equals('student')}">
-			<a href="myProfileAction"> <img
-				src="<s:url action="profilePicAction"/>" height="100" width="100" /></a>
+			<s:if test="%{#session.student.stuPhoto.length != 0}">
+			<a href="profilePicAction"> <img
+				src="<s:url action="getProfilePicAction"/>" height="100" width="100" /></a>
 			<br>
 			<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			Last logged on: <s:property value="%{#session.student.stuLoggedIn}" />
-
+			</s:if>
+			
+			<s:else>
+			<a href="profilePicAction"> <img
+				src="images/defaultuser.jpeg" height="100" width="100" /></a>
+			<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Last logged on: <s:property value="%{#session.student.stuLoggedIn}" />
+			</s:else>
 		</s:if>
 		<s:else>
-
+		<img src="images/admin.gif" height="100" width="100" />
 		</s:else>
 	</div>
 </body>
