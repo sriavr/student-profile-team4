@@ -43,6 +43,16 @@
 		});// end of myForm submit
 
 	});// end of ready
+	function changeHiddenString(id){
+		//alert(id);
+		hiddenString = document.getElementById("hiddenStr").value;
+		elem = document.getElementById(id);
+		if(elem.checked)
+			hiddenString += id+":";
+		else
+			hiddenString += "-"+id+":";
+		document.getElementById("hiddenStr").value = hiddenString;
+	}
 </script>
 </head>
 <body>
@@ -54,7 +64,7 @@
 				<td>Roll No</td>
 
 				<td><s:textfield name="studentID"
-						value="%{#session.student.stuID}" /></td>
+						value="%{#session.student.stuRollNo}" disabled="true" /></td>
 			</tr>
 
 			<tr>
@@ -74,14 +84,24 @@
 
 				<td><s:file name="uploadPic" /></td>
 			</tr>
-
+			<s:hidden name="hiddenStr" id="hiddenStr"/>
 			<tr>
-				<td>Interests <br>
-					<div class="border-class">
-						<s:checkboxlist list="interests" listKey="intID"
-							listValue="intName" name="selectedInterests"></s:checkboxlist>
-					</div>
-
+				<td>Interests</td>
+				<td>
+							
+				<s:if test="%{pertInts  != null}">
+				<s:iterator value="pertInts" var="pert">
+				<input  type="checkbox" name="checkedInterest" checked id="<s:property value="%{#pert}"/>" onchange='changeHiddenString("<s:property value="%{#pert}"/>")'><s:property value="%{#pert}" /> 
+				</s:iterator>
+				<s:iterator value="allInts" var="all">
+				<input  type="checkbox" name="checkedInterest" id="<s:property value="%{#all}"/>" onchange='changeHiddenString("<s:property value="%{#all}"/>")'><s:property value="%{#all}"/> 
+				</s:iterator>		
+				</s:if>
+				<s:else>
+				<s:iterator value="allInts" var="all">
+				<input  type="checkbox" name="checkedInterest" id="<s:property value="%{#all}"/>" onchange='changeHiddenString("<s:property value="%{#all}"/>")'><s:property value="%{#all}"/> 
+				</s:iterator>	
+				</s:else>
 				</td>
 			</tr>
 
