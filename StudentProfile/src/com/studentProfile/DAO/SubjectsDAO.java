@@ -29,7 +29,7 @@ public class SubjectsDAO {
 		if (state == 1) { // showing own enrolled subject.
 			Query = "SELECT s.subID,s.subCode,s.subName,s.subSyllabus,f.facName,sm.semName,enr.enrGrade,enr.stuID "
 					+ " FROM subject s JOIN faculty f ON s.facID=f.facID JOIN semester sm "
-					+ " ON s.semID=sm.semID LEFT JOIN enrollment enr ON enr.subID=s.subID "
+					+ " ON s.semID=sm.semID JOIN enrollment enr ON enr.subID=s.subID "
 					+ " WHERE enr.stuID=" + stuID;
 		} else { // state 2 for showing all.
 
@@ -41,7 +41,7 @@ public class SubjectsDAO {
 		resultSet = BaseDAO.readFromDB(Query);
 		try {
 			while (resultSet.next()) {
-				subject.add(getSubjectObject(resultSet));
+				subject.add(getSubjectObject(resultSet, stuID));
 			}
 		} catch (SQLException e) {
 			// TODO: handle exception
@@ -53,7 +53,7 @@ public class SubjectsDAO {
 	}// End of Get
 
 	// create a subjectsModel object from resultSet.
-	public static SubjectsModel getSubjectObject(ResultSet rs) {
+	public static SubjectsModel getSubjectObject(ResultSet rs, int stuID) {
 		SubjectsModel subjectModel = new SubjectsModel();
 		try {
 			subjectModel.setSubID(rs.getInt("s.subID"));
@@ -72,10 +72,10 @@ public class SubjectsDAO {
 			}
 
 			// check student has enroll or not.
-			if (rs.getInt("enr.stuID") == 0) {
-				subjectModel.setIsEnroll("N");
-			} else {
+			if (rs.getInt("enr.stuID") == stuID) {
 				subjectModel.setIsEnroll("Y");
+			} else {
+				subjectModel.setIsEnroll("N");
 			}
 			subjectModel.setStuID(rs.getInt("enr.stuID"));
 			System.out.println("Sllanus is: " + rs.getString("s.subSyllabus"));
