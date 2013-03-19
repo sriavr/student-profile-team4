@@ -5,6 +5,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 
@@ -19,23 +22,36 @@ import com.studentProfile.util.LogMessage;
 
 public class EditMyProfileAction extends ActionSupport {
 
-	private String selectedInterests;
 	Integer studentID;
 	String studentName;
 	File uploadPic;
 	Date studentDOB;
+	String[] checkedInterest;
+	String hiddenStr;
+	Set<String> updatedIntList;
+	String interestString;
+	
+
+	public String getHiddenStr() {
+		return hiddenStr;
+	}
+
+	public void setHiddenStr(String hiddenStr) {
+		this.hiddenStr = hiddenStr;
+	}
+
+	public String[] getCheckedInterest() {
+		return checkedInterest;
+	}
+
+	public void setCheckedInterest(String[] checkedInterest) {
+		this.checkedInterest = checkedInterest;
+	}
 
 	StudentModel studDetails = new StudentModel();
 	StudentDAO studDAO = new StudentDAO();
 
-	public String getSelectedInterests() {
-		return selectedInterests;
-	}
-
-	public void setSelectedInterests(String selectedInterests) {
-		this.selectedInterests = selectedInterests;
-	}
-
+	
 	public String editProfile() {
 		InterestDAO intDAO = new InterestDAO();
 		StudentModel student = (StudentModel) ActionContext.getContext()
@@ -45,21 +61,20 @@ public class EditMyProfileAction extends ActionSupport {
 			return ERROR;
 		}
 
-		int stuID = student.getStuID();
-
+		
 		try {
-			LogMessage.log("selectedInterests:" + selectedInterests + " stuID:"
-					+ stuID + " studentID:" + studentID);
-
-			if (!selectedInterests.isEmpty()) {
-				String[] strInterests = selectedInterests.split(",");
-				int[] interests = new int[strInterests.length];
-				for (int i = 0; i < strInterests.length; i++) {
-					strInterests[i].trim();
-					interests[i] = Integer.parseInt(strInterests[i]);
-					intDAO.mapStudentInterest(stuID, interests[i]);
-				}
-			}
+//			LogMessage.log("selectedInterests:" + selectedInterests + " stuID:"
+//					+ stuID + " studentID:" + studentID);
+//
+//			if (!selectedInterests.isEmpty()) {
+//				String[] strInterests = selectedInterests.split(",");
+//				int[] interests = new int[strInterests.length];
+//				for (int i = 0; i < strInterests.length; i++) {
+//					strInterests[i].trim();
+//					interests[i] = Integer.parseInt(strInterests[i]);
+//					intDAO.mapStudentInterest(stuID, interests[i]);
+//				}
+//			}
 			studDetails.setStuID(getStudentID());
 			studDetails.setStuName(getStudentName());
 			studDetails.setStuDOB(getStudentDOB());
@@ -76,17 +91,42 @@ public class EditMyProfileAction extends ActionSupport {
 				studDetails.setStuPhoto(picData);
 				flag = 1;
 			}
+			//Interest checkboxes
+			System.out.println("selected Int : ");
+			String selectedInt[] = hiddenStr.split(":");
+			updatedIntList = new HashSet<String>();
+			for (int i = 1; i < selectedInt.length; i++) {
+				System.out.println(selectedInt[i]);
+				if(selectedInt[i].charAt(0)=='-')
+					updatedIntList.remove(selectedInt[i].substring(1, selectedInt[i].length()));
+					
+				else
+					updatedIntList.add(selectedInt[i]);
+			}
+			System.out.println("list " +updatedIntList);
+			intDAO.removeStudInterests(studDetails.getStuID());
+			Iterator<String> it = updatedIntList.iterator();
+			while(it.hasNext()){
+				String intName =  (String)it.next() ;
+				int intId = intDAO.getIntId(intName);
+				intDAO.mapStudentInterest(studDetails.getStuID(),intId);
+			}
+			System.out.println("intersted String" + interestString);
+			//updatedInterests()
 			studDAO.updateProfile(studDetails);
+			
 			if (flag != 0) {
 				((StudentModel) ActionContext.getContext().getSession()
 						.get("student")).setStuPhoto(picData);
 			}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return SUCCESS;
 	}
+	
 
 	public Integer getStudentID() {
 		return studentID;
