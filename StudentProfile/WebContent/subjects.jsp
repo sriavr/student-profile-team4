@@ -34,7 +34,7 @@
 				
 				<th id="th_background" width="170"><s:text name="Subject_Code"/></th>
 				<th id="th_background" width="170"><s:text name="Subject"/></th>
-				<th id="th_background" width="170"><s:text name="Faculty_name" /></th>
+<%-- 				<th id="th_background" width="170"><s:text name="Faculty_name" /></th> --%>
 				<th id="th_background" width="170"><s:text name="Sem" /></th>
 				<th id="th_background" width="170"><s:text name="Enrolled"/></th>
 				<th id="th_background" width="170"><s:text name="Grade"/></th>
@@ -52,7 +52,7 @@
 						</a>
 					</td>
 					<td><s:property value="subName"/></td>
-					<td><s:property value="facName"/></td>
+<%-- 					<td><s:property value="facName"/></td> --%>
 					<td><s:property value="semName"/></td>
 					<td><s:property value="isEnroll"/> </td>
 					<td><s:property value="enrGrade"/></td>
