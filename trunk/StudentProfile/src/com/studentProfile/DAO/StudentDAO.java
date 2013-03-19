@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 
 import com.mysql.jdbc.Blob;
 import com.studentProfile.model.entity.*;
@@ -22,7 +23,7 @@ public class StudentDAO {
 		try {
 			DatabaseUtil.connect();
 			DatabaseUtil.ps = DatabaseUtil.con
-					.prepareStatement("select * from student where stuRollNo=? and stuPassword=?");
+					.prepareStatement("select * from student where stuName=? and stuPassword=?");
 			LogMessage
 					.log("Message From StudentDAO.login : Arguments ::username is--"
 							+ userName + " password is--" + password);
@@ -92,7 +93,7 @@ public class StudentDAO {
 				student.setStuRollNo(DatabaseUtil.rs.getString("stuRollNo"));
 				student.setStuDOB(DatabaseUtil.rs.getDate("stuDOB"));
 				Blob blob = (Blob) DatabaseUtil.rs.getBlob("stuPhoto");
-				System.out.println("pic length:"+blob.length());
+				//System.out.println("pic length:"+blob.length());
 				if (blob != null)
 					student.setStuPhoto(blob.getBytes(1, (int) blob.length()));
 				// student.setIntID(DatabaseUtil.rs.getInt("intID"));
