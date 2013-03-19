@@ -22,7 +22,7 @@ public class StudentDAO {
 		try {
 			DatabaseUtil.connect();
 			DatabaseUtil.ps = DatabaseUtil.con
-					.prepareStatement("select * from student where stuName=? and stuPassword=?");
+					.prepareStatement("select * from student where stuRollNo=? and stuPassword=?");
 			LogMessage
 					.log("Message From StudentDAO.login : Arguments ::username is--"
 							+ userName + " password is--" + password);
