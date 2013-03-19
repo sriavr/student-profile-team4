@@ -1,6 +1,9 @@
 package com.studentProfile.action;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
@@ -12,23 +15,33 @@ import com.studentProfile.util.LogMessage;
 
 public class MyProfileAction extends ActionSupport {
 	private ArrayList<InterestModel> interests = new ArrayList<InterestModel>();
-	private String stuID="";
-	StudentModel student;
-
-	public StudentModel getStudent() {
-		return student;
+	Set<String> allInts;
+	Set<String> pertInts;
+	String hiddenStr=":";
+	
+	
+	public String getHiddenStr() {
+		return hiddenStr;
 	}
 
-	public void setStudent(StudentModel student) {
-		this.student = student;
+	public void setHiddenStr(String hiddenStr) {
+		this.hiddenStr = hiddenStr;
 	}
 
-	public String getStuID() {
-		return stuID;
+	public Set<String> getAllInts() {
+		return allInts;
 	}
 
-	public void setStuID(String stuID) {
-		this.stuID = stuID;
+	public void setAllInts(Set<String> allInts) {
+		this.allInts = allInts;
+	}
+
+	public Set<String> getPertInts() {
+		return pertInts;
+	}
+
+	public void setPertInts(Set<String> pertInts) {
+		this.pertInts = pertInts;
 	}
 
 	public ArrayList<InterestModel> getInterests() {
@@ -41,33 +54,39 @@ public class MyProfileAction extends ActionSupport {
 
 	public String myProfile() {
 		System.out.println("myprofile ()");
-		student = (StudentModel) ActionContext.getContext()
+		StudentModel student = (StudentModel) ActionContext.getContext()
 				.getSession().get("student");
 		if (student == null) {
 			return ERROR;
 		}
 		LogMessage
-				.log("Message From MyProfileAction.profilePic : Arguments :: stuID:"
-						+ student.getStuID());
+				.log("Message From MyProfileAction.myProfile : Arguments :: none");
 		InterestDAO interestDAO = new InterestDAO();
-		ArrayList<InterestModel> ints;
-		System.out.println("student ID:"+stuID);
-		if(stuID.equals(""))
-		{	
-			 ints = interestDAO.getInterests(student
+		//get all interests 
+		allInts = interestDAO.allInterests();
+		System.out.println("set all Interests : " + allInts);
+		//get Particular student Interests
+		System.out.println("one");
+		pertInts = interestDAO.getStudInterests(student
 				.getStuID());
+		System.out.println("two");
+		if(pertInts != null){
+			System.out.println("three");
+			Iterator<String> iterator = pertInts.iterator(); 
+			while(iterator.hasNext()) {
+				String interest = (String) iterator.next();
+				hiddenStr += interest+":";
+			}
 		}
-		else
-		{
-			ints = interestDAO.getInterests(Integer.parseInt(stuID));
-			
+		
+		System.out.println("hidden string " + hiddenStr);
+		System.out.println("set pert Interests : " + pertInts);
+		if(pertInts != null){
+			allInts.removeAll(pertInts);
 		}
-		if (ints != null) {
-			setInterests(ints);
-			LogMessage.log("size of interests list:" + interests.size());
-		} else {
-			addActionMessage("No interests added for this student yet");
-		}
+		System.out.println("set diff Interests : " + allInts);
+		
+
 		return Action.SUCCESS;
 	}
 }
