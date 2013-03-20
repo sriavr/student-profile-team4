@@ -104,12 +104,12 @@ public class EditMyProfileAction extends ActionSupport {
 					updatedIntList.add(selectedInt[i]);
 			}
 			System.out.println("list " +updatedIntList);
-			intDAO.removeStudInterests(studDetails.getStuID());
+			intDAO.removeStudInterests(student.getStuID());
 			Iterator<String> it = updatedIntList.iterator();
 			while(it.hasNext()){
 				String intName =  (String)it.next() ;
 				int intId = intDAO.getIntId(intName);
-				intDAO.mapStudentInterest(studDetails.getStuID(),intId);
+				intDAO.mapStudentInterest(student.getStuID(),intId);
 			}
 			System.out.println("intersted String" + interestString);
 			//updatedInterests()
